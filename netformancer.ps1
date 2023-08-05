@@ -36,8 +36,8 @@ while ($true) {
         $dataInTotal = "{0:N2}" -f (($stats.ReceivedBytes - $initialStats[$adapter.Name].ReceivedBytes) / 1GB)
         $dataOutTotal = "{0:N2}" -f (($stats.SentBytes - $initialStats[$adapter.Name].SentBytes) / 1GB)
 
-        $pausesIn = $stats.ReceivedPauseFrames
-        $pausesOut = $stats.SentPauseFrames
+        $pausesIn = if ($stats.ReceivedPauseFrames) { $stats.ReceivedPauseFrames } else { 0 }
+        $pausesOut = if ($stats.SentPauseFrames) { $stats.SentPauseFrames } else { 0 }
         $errorsInTotal = if ($stats.ReceivedErrors) { $stats.ReceivedErrors } else { 0 }
         $discardsInTotal = if ($stats.ReceivedDiscards) { $stats.ReceivedDiscards } else { 0 }
         $errorsOutTotal = if ($stats.SentErrors) { $stats.SentErrors } else { 0 }
@@ -49,7 +49,7 @@ while ($true) {
         Write-Host ("Data Out Rate: {0} KB/s, Data Out Total: {1} GB" -f $dataOutRate, $dataOutTotal)
         Write-Host ("Pauses Out:{0}, Discards Out: {1}, Errors Out: {2}." -f $pausesOut, $discardsOutTotal, $errorsOutTotal)
         Write-Host ""
-		Write-Host ""
+        Write-Host ""
     }
 
     Start-Sleep -Seconds 5
