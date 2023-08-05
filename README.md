@@ -16,7 +16,7 @@ It's tailored to display statistics for all available network adapters, with the
 ## Output
 It looks like this..
 ```
-                Netformancer
+                  Netformancer
 
 Adapter: Ethernet - Idle Time: 00:00:00
 
