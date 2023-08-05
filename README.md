@@ -39,7 +39,7 @@ Pauses Out: 0, Discards Out: 0, Errors Out: 0.
 1. Execute the batch "Netformancer.bat" to launch the netformancer.ps1 PowerShell script.
 2. Observe the real-time statistics for each network adapter, including data rates, total data, errors, discards, and pause frames.
 3. The script will continue to run, updating the statistics every 5 seconds, until manually terminated.
-*. For easy access, put the "Netformancer.lnk" shortcut on your taskbar next to internet themed applications.
+6. For easy access, put the "Netformancer.lnk" shortcut on your taskbar next to internet themed applications.
 
 ## Requirements
 
