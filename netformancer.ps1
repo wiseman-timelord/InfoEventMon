@@ -4,7 +4,7 @@ $idleStartTime = @{}
 
 while ($true) {
     Clear-Host
-    Write-Host "`n                Netformancer`n`n"
+    Write-Host "`n                  Netformancer`n`n"
 
     $adapters = Get-NetAdapter
 
