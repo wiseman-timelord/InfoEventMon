@@ -13,6 +13,25 @@ It's tailored to display statistics for all available network adapters, with the
 3. **Customizable Output:** The script can be modified to include additional statistics or change the display format, allowing users to tailor the output to their needs.
 4. **Idle Time Tracking:** Monitors the idle time for each adapter, helping to identify potential connectivity issues or underutilized resources.
 
+## Output
+It looks like this..
+                Netformancer
+
+Adapter: Ethernet - Idle Time: 00:00:00
+
+Data In Rate: 0 KB/s, Data In Total: 0.00 GB
+Pauses In:, Discards In: 0, Errors In: 0.
+Data Out Rate: 0 KB/s, Data Out Total: 0.00 GB
+Pauses Out:, Discards Out: 0, Errors Out: 0.
+
+
+Adapter: vEthernet (Default Switch) - Idle Time: 00:00:00
+
+Data In Rate: 0 KB/s, Data In Total: 0.00 GB
+Pauses In:, Discards In: 0, Errors In: 0.
+Data Out Rate: 0 KB/s, Data Out Total: 0.00 GB
+Pauses Out:, Discards Out: 0, Errors Out: 0.
+
 ## Usage
 
 1. Execute the batch "Netformancer.bat" to launch the netformancer.ps1 PowerShell script.
