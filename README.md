@@ -1,11 +1,11 @@
-# Netformancer
+# Netformance
 Status: Working.
 
 ## Description
-Netformancer is a PowerShell application designed for Windows users, providing real-time monitoring of network adapter statistics, including data rates, total data, errors, discards, and pause frames. 
+Netformance is a PowerShell application designed for Windows users, providing real-time monitoring of network adapter statistics, including data rates, total data, errors, discards, and pause frames. 
 The script offers a comprehensive view of network performance, allowing users to identify and diagnose network-related issues.
 It's tailored to display statistics for all available network adapters, with the ability to customize the output format and include additional statistics as needed.
-Netformancer is better than the Network section of the Task Manager, because it displays transfer rate in KB/s not KBit/s, and additionally displays, Pauses, Discards and Errors. 
+Netformance is better than the Network section of the Task Manager, because it displays transfer rate in KB/s not KBit/s, and additionally displays, Pauses, Discards and Errors. 
 
 ## Features
 
@@ -17,7 +17,7 @@ Netformancer is better than the Network section of the Task Manager, because it 
 ## Output
 The app looks like this..
 ```
-                  Netformancer
+                  Netformance
 
 Adapter: Ethernet - Idle Time: 00:00:00
 
@@ -37,7 +37,7 @@ Pauses Out: 0, Discards Out: 0, Errors Out: 0.
 
 ## Usage
 
-1. Execute the batch "Netformancer.bat" to launch the netformancer.ps1 PowerShell script.
+1. Execute the batch "Netformance.bat" to launch the netformance.ps1 PowerShell script.
 2. Observe the real-time statistics for each network adapter, including data rates, total data, errors, discards, and pause frames.
 3. The script will continue to run, updating the statistics every 5 seconds, until manually terminated.
 4. For easy access, put the "Netformancer.lnk" shortcut on your taskbar next to internet icons.
