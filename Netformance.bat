@@ -1,5 +1,6 @@
 :: Initiation
 @echo off
+mode 70,30
 Echo.
 Echo.
 
