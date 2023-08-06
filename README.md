@@ -14,7 +14,7 @@ It's tailored to display statistics for all available network adapters, with the
 4. **Idle Time Tracking:** Monitors the idle time for each adapter, helping to identify potential connectivity issues or underutilized resources.
 
 ## Output
-It looks like this..
+The app looks like this..
 ```
                   Netformancer
 
