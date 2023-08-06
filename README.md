@@ -49,4 +49,4 @@ Pauses Out: 0, Discards Out: 0, Errors Out: 0.
 
 ## Disclaimer
 
-Netformancer is designed to provide real-time monitoring of network adapter statistics. While it does not modify or interfere with network operations, users should be aware that the information provided is subject to the capabilities and configuration of the network adapters and underlying system. Interpretation and use of the data should be done with an understanding of networking principles and the specific network environment.
+Netformance is designed to provide real-time monitoring of network adapter statistics. While it does not modify or interfere with network operations, users should be aware that the information provided is subject to the capabilities and configuration of the network adapters and underlying system. Interpretation and use of the data should be done with an understanding of networking principles and the specific network environment.
