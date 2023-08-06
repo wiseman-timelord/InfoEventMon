@@ -5,7 +5,7 @@ Status: Working.
 Netformancer is a PowerShell application designed for Windows users, providing real-time monitoring of network adapter statistics, including data rates, total data, errors, discards, and pause frames. 
 The script offers a comprehensive view of network performance, allowing users to identify and diagnose network-related issues.
 It's tailored to display statistics for all available network adapters, with the ability to customize the output format and include additional statistics as needed.
-Netformancer is better than the Network section of the Task Manager because, Netformancer displays transfer rate in KB/s not KBit/s, and additionally displays Pauses, Discards and Errors. 
+Netformancer is better than the Network section of the Task Manager, because it displays transfer rate in KB/s not KBit/s, and additionally displays, Pauses, Discards and Errors. 
 
 ## Features
 
