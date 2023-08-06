@@ -17,22 +17,33 @@ Netformance is better than the Network section of the Task Manager, because it d
 ## Output
 The app looks like this..
 ```
-                  Netformance
-
-Adapter: Ethernet - Idle Time: 00:00:00
-
-Data In Rate: 0 KB/s, Data In Total: 0.00 GB
-Pauses In: 0, Discards In: 0, Errors In: 0.
-Data Out Rate: 0 KB/s, Data Out Total: 0.00 GB
-Pauses Out: 0, Discards Out: 0, Errors Out: 0.
 
 
-Adapter: vEthernet (Default Switch) - Idle Time: 00:00:00
+                  Netformancer
 
-Data In Rate: 0 KB/s, Data In Total: 0.00 GB
-Pauses In: 0, Discards In: 0, Errors In: 0.
-Data Out Rate: 0 KB/s, Data Out Total: 0.00 GB
-Pauses Out: 0, Discards Out: 0, Errors Out: 0.
+
+Adapter: vEthernet (WSL) - Idle Time: 01:45:46
+
+Data In Rate: 0.00 KB/s, Data In Total: 0.00 GB
+Pauses In:0, Discards In: 0, Errors In: 0.
+Data Out Rate: 0.00 KB/s, Data Out Total: 0.03 GB
+Pauses Out:0, Discards Out: 0, Errors Out: 0.
+
+
+Adapter: Ethernet - Idle Time: 00:14:25
+
+Data In Rate: 0.06 KB/s, Data In Total: 33.45 GB
+Pauses In:0, Discards In: 0, Errors In: 0.
+Data Out Rate: 0.04 KB/s, Data Out Total: 0.66 GB
+Pauses Out:0, Discards Out: 0, Errors Out: 0.
+
+
+Adapter: vEthernet (Default Switch) - Idle Time: 04:49:47
+
+Data In Rate: 0.00 KB/s, Data In Total: 0.00 GB
+Pauses In:0, Discards In: 0, Errors In: 0.
+Data Out Rate: 0.00 KB/s, Data Out Total: 0.00 GB
+Pauses Out:0, Discards Out: 0, Errors Out: 0.
 ```
 
 ## Usage
