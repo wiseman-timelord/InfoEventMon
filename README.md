@@ -19,7 +19,7 @@ The app looks like this..
 ```
 
 
-                  Netformancer
+                  Netformance
 
 
 Adapter: vEthernet (WSL) - Idle Time: 01:45:46
