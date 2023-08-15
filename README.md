@@ -1,11 +1,11 @@
-# Netformance
+# NetForm
 Status: Working.
 
 ## Description
-Netformance is a PowerShell application designed for Windows users, providing real-time monitoring of network adapter statistics, including data rates, total data, errors, discards, and pause frames. 
+NetForm is a PowerShell application designed for Windows users, providing real-time monitoring of network adapter statistics, including data rates, total data, errors, discards, and pause frames. 
 The script offers a comprehensive view of network performance, allowing users to identify and diagnose network-related issues.
 It's tailored to display statistics for all available network adapters, with the ability to customize the output format and include additional statistics as needed.
-Netformance is better than the Network section of the Task Manager, because it displays transfer rate in KB/s not KBit/s, and additionally displays, Pauses, Discards and Errors. 
+NetForm is better than the Network section of the Task Manager, because it displays transfer rate in KB/s not KBit/s, and additionally displays, Pauses, Discards and Errors. 
 
 ## Features
 
@@ -19,7 +19,7 @@ The app looks like this..
 ```
 
 
-                  Netformance
+                    NetForm
 
 
 Adapter: vEthernet (WSL) - Idle Time: 01:45:46
@@ -48,10 +48,10 @@ Pauses Out:0, Discards Out: 0, Errors Out: 0.
 
 ## Usage
 
-1. Execute the batch "Netformance.bat" to launch the netformance.ps1 PowerShell script.
+1. Execute the batch "NetForm.bat" to launch the netform.ps1 PowerShell script.
 2. Observe the real-time statistics for each network adapter, including data rates, total data, errors, discards, and pause frames.
 3. The script will continue to run, updating the statistics every 5 seconds, until manually terminated.
-4. The "Netformance.lnk" shortcut provided with preset arguements to run ".bat" on taskbar.
+4. The "NetForm.lnk" shortcut provided with preset arguements to run ".bat" on taskbar.
 
 ## Requirements
 
@@ -60,4 +60,4 @@ Pauses Out:0, Discards Out: 0, Errors Out: 0.
 
 ## Disclaimer
 
-Netformance is designed to provide real-time monitoring of network adapter statistics. While it does not modify or interfere with network operations, users should be aware that the information provided is subject to the capabilities and configuration of the network adapters and underlying system. Interpretation and use of the data should be done with an understanding of networking principles and the specific network environment.
+NetForm is designed to provide real-time monitoring of network adapter statistics. While it does not modify or interfere with network operations, users should be aware that the information provided is subject to the capabilities and configuration of the network adapters and underlying system. Interpretation and use of the data should be done with an understanding of networking principles and the specific network environment.
