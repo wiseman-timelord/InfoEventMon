@@ -20,8 +20,8 @@ while ($true) {
         $dataOutRate = 0
 
         if ($previousStats[$adapter.Name]) {
-            $dataInRate = "{0:N2}" -f (($stats.ReceivedBytes - $previousStats[$adapter.Name].ReceivedBytes) / 5 / 1024)
-            $dataOutRate = "{0:N2}" -f (($stats.SentBytes - $previousStats[$adapter.Name].SentBytes) / 5 / 1024)
+            $dataInRate = "{0:N2}" -f (($stats.ReceivedBytes - $previousStats[$adapter.Name].ReceivedBytes) / 1 / 1024)
+            $dataOutRate = "{0:N2}" -f (($stats.SentBytes - $previousStats[$adapter.Name].SentBytes) / 1 / 1024)
         }
 
         if ([double]$dataInRate -gt 100 -or [double]$dataOutRate -gt 100) {
@@ -52,5 +52,5 @@ while ($true) {
         Write-Host ""
     }
 
-    Start-Sleep -Seconds 5
+    Start-Sleep -Seconds 1
 }
