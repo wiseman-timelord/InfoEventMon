@@ -3,9 +3,9 @@
 Under Development.
 <br>The scripts for NetForm will be, re-used and re-written in PWSH 7.4, and the batches will be designed for windows, 8.1 and 10. It will show themes of statistical output in text based display interface, each of the themes of stats will be in its own script, hence, adding or removing a stat from each theme will be as simple as swapping around a pwsh command, this will then be multi-platform app, .
 
-REQUIREMENTS:
+## REQUIREMENTS:
 Batch Support for "PerforMancer-BaPs.Bat" Launcher.
-[PWSH 7.4](https://github.com/PowerShell/PowerShell/releases/tag/v7.4.0) for other scripts. 
+[PWSH 7.4](https://github.com/PowerShell/PowerShell/releases/tag/v7.4.0) for other scripts, [here](https://github.com/PowerShell/PowerShell/releases/download/v7.4.0/PowerShell-7.4.0-win-x64.msi) is the `.msi` installer for Windows x64) 
 
 
 (O_o/'
@@ -103,11 +103,6 @@ Pauses Out:0, Discards Out: 0, Errors Out: 0.
 2. Observe the real-time statistics for each network adapter, including data rates, total data, errors, discards, and pause frames.
 3. The script will continue to run, updating the statistics every 5 seconds, until manually terminated.
 4. The "NetForm.lnk" shortcut provided with preset arguements to run ".bat" on taskbar.
-
-## Requirements
-
-- PowerShell 
-- Network adapters for monitoring.
 
 ## Disclaimer
 
