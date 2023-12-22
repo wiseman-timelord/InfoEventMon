@@ -4,7 +4,6 @@ The, scripts for NetForm and bits of my other projects, will be, re-used and re-
 - Available stats will be explored, but will likely turn out to be minimal in some of the themes with PWSH 7.4 by itself, so this will be the best stats it has to offer, while being limited to stats that actually change.
 - Multi-platform compatibility with core scripts due to PWSH (see requirements).
 - Each of the themes of stats will be in its own script, the loops will be in their own processes.
-- 
 
 ## WORK:
 - Features for next update...
