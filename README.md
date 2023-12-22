@@ -1,7 +1,15 @@
-# NetForm
-## Status:
-Development.
-<br>The scripts for NetForm have been tested to, run on Windows 10 and fail on Windows 8.1,  due to multiple reasons, these will later be investigated.
+# PerforMancer-BaPs Previously NetForm
+## Status: 
+Under Development.
+<br>The scripts for NetForm have been re-used, as well as some of the batch code from my new project "LlmCpp-BaPs-Agent", this will create 4 windows, that will run, Powershell 5.1 and PWSH 7.4, commands compatible in windows, 8.1 and 10......
+
+
+
+(O_o/'
+
+
+HERE IS THE OLD DESCRIPTION...
+
 
 ## Description
 NetForm is a PowerShell application designed for Windows users, providing real-time monitoring of network adapter statistics, including data rates, total data, errors, discards, and pause frames. 
@@ -57,7 +65,7 @@ Pauses Out:0, Discards Out: 0, Errors Out: 0.
 
 ## Requirements
 
-- Windows with PowerShell support (Windows 2008 R2, 2012, 8.1, 10)
+- PowerShell 
 - Network adapters for monitoring.
 
 ## Disclaimer
