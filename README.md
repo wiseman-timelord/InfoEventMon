@@ -1,7 +1,7 @@
 # PerforMancer-BaPs Previously NetForm
 ## Status: 
 Under Development.
-<br>The scripts for NetForm have been re-used, as well as some of the batch code from my new project "LlmCpp-BaPs-Agent", this will create 4 windows, that will run, Powershell 5.1 and PWSH 7.4, commands compatible in windows, 8.1 and 10......
+<br>The scripts for NetForm have been re-used, as well as some of the batch code from my new project "LlmCppAgent-BaPs", this will create 4 windows, that will run, Powershell 5.1 and PWSH 7.4, commands compatible in windows, 8.1 and 10......
 
 
 
