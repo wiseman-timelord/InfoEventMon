@@ -1,4 +1,4 @@
-# PerforMancer-BaPs Previously NetForm
+# PerforMancer-Ps7 Previously NetForm
 ## STATUS: 
 Under Development.
 <br>The, scripts for NetForm and bits of my other projects, will be, re-used and re-written in PWSH 7.4. It will instead show themes of statistical output in text based display interface, each of the themes of stats will be in its own script, hence...
