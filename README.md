@@ -1,7 +1,7 @@
 # PerforMancer-BaPs Previously NetForm
 ## Status: 
 Under Development.
-<br>The scripts for NetForm will been re-used, as well as some of the batch code from my new project "LlmCppAgent-BaPs", this will create up to 4 fly out windows from menu with exit option on menu to quit batch, once required stat windows are present, this will be PWSH 7.4, and the batch will be designed to work in windows, 8.1 and 10. Each of the fly-out windows will show themes of statistical output in enhanced text based display interface.
+<br>The scripts for NetForm will be, re-used and re-written in PWSH 7.4, and the batches will be designed for windows, 8.1 and 10. It will show themes of statistical output in enhanced text based display interface.
 
 (O_o/'
 
