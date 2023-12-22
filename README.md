@@ -5,6 +5,24 @@ Under Development.
 
 (O_o/'
 
+PREVIEW:
+```
+===================( PerforMancer-BaPs )====================
+
+                    Stat Theme Selection
+
+                    1. CPU (Processors)
+                    2. GPU (Graphics)
+                    3. AUD (Sound)
+                    4. NET (Connections)
+
+                    0. Exit Program
+
+Enter your choice (1-0):
+
+```
+
+
 
 HERE IS THE OLD DESCRIPTION...
 
