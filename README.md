@@ -9,6 +9,15 @@ PREVIEW:
 ```
 ===================( PerforMancer-BaPs )====================
 
+
+
+
+
+
+
+
+
+
                     Stat Theme Selection
 
                     1. CPU (Processors)
@@ -17,6 +26,14 @@ PREVIEW:
                     4. NET (Connections)
 
                     0. Exit Program
+
+
+
+
+
+
+
+
 
 Enter your choice (1-0):
 
