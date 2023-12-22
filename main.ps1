@@ -1,23 +1,33 @@
+# Initialization
 $Host.UI.RawUI.ForegroundColor = 'Yellow'
+.\cpuStats.ps1
+.\gpuStats.ps1
+.\soundStats.ps1
+.\networkStats.ps1
 
-while ($true) {
+# Artwork
+function Display-Title {
     Clear-Host
     Write-Host "`n===================( " -NoNewline -ForegroundColor Cyan
-    Write-Host "PerforMancer-BaPs" -NoNewline
-    Write-Host " )====================`n`n`n`n`n`n`n`n" -ForegroundColor Cyan
+    Write-Host "PerforMancer-BaP7" -NoNewline
+    Write-Host " )====================`n" -ForegroundColor Cyan
+}
+
+# Main Menu
+while ($true) {
+    Display-Title
     Write-Host "                    Stat Theme Selection`n"
     Write-Host "                    1. CPU (Processors)"
     Write-Host "                    2. GPU (Graphics)"
     Write-Host "                    3. AUD (Sound)"
     Write-Host "                    4. NET (Connections)`n"
-    Write-Host "                    0. Exit Program`n`n`n`n`n`n`n`n`n"
-
-    $choice = Read-Host "Enter your choice (1-0)"
+    Write-Host "                    0. Exit Program`n"
+    $choice = Read-Host "Enter your choice (0-4)"
     switch ($choice) {
-        "1" { Start-Process pwsh -ArgumentList "-NoExit -File .\cpuStats.ps1" }
-        "2" { Start-Process pwsh -ArgumentList "-NoExit -File .\gpuStats.ps1" }
-        "3" { Start-Process pwsh -ArgumentList "-NoExit -File .\soundStats.ps1" }
-        "4" { Start-Process pwsh -ArgumentList "-NoExit -File .\networkStats.ps1" }
+        "1" { Run-CPUStats }
+        "2" { Run-GPUStats }
+        "3" { Run-SoundStats }
+        "4" { Run-NetworkStats }
         "0" { exit }
         default { Write-Host "Invalid choice. Please try again." }
     }

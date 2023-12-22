@@ -15,21 +15,21 @@ function Get-SoundStatistic {
     }
 }
 
-while ($true) {
-    Clear-Host
-    Write-Host "╔═══════════════════════════════════╗"
-    Write-Host "║       Sound Statistics           ║"
-    Write-Host "╚═══════════════════════════════════╝"
+function Run-SoundStats {
+    while ($true) {
+        Display-Title  # Display the title
+        Write-Host "Sound Statistics:`n"
 
-    # Default Audio Device
-    Get-SoundStatistic -Name "Default Audio Device" -Command { 
-        (Get-WmiObject Win32_SoundDevice | Select-Object -First 1).Name 
+        # Default Audio Device
+        Get-SoundStatistic -Name "Default Audio Device" -Command { 
+            (Get-WmiObject Win32_SoundDevice | Select-Object -First 1).Name 
+        }
+
+        # Placeholder for additional sound stats
+        Get-SoundStatistic -Name "Volume Level" -Command { "Not available - requires tool integration" }
+        Get-SoundStatistic -Name "Mute Status" -Command { "Not available - requires tool integration" }
+        Get-SoundStatistic -Name "Audio Format" -Command { "Not available - requires tool integration" }
+
+        Start-Sleep -Seconds 1
     }
-
-    # Placeholder for additional sound stats
-    Get-SoundStatistic -Name "Volume Level" -Command { "Not available - requires tool integration" }
-    Get-SoundStatistic -Name "Mute Status" -Command { "Not available - requires tool integration" }
-    Get-SoundStatistic -Name "Audio Format" -Command { "Not available - requires tool integration" }
-
-    Start-Sleep -Seconds 1
 }

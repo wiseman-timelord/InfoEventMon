@@ -15,26 +15,26 @@ function Get-NetworkStatistic {
     }
 }
 
-while ($true) {
-    Clear-Host
-    Write-Host "╔═══════════════════════════════════╗"
-    Write-Host "║      Network Statistics          ║"
-    Write-Host "╚═══════════════════════════════════╝"
+function Run-NetworkStats {
+    while ($true) {
+        Display-Title  # Display the title
+        Write-Host "Network Statistics:`n"
 
-    # Network Adapters and Status
-    Get-NetworkStatistic -Name "Network Adapters" -Command {
-        Get-NetAdapter | Format-Table Name, Status, LinkSpeed -AutoSize
+        # Network Adapters and Status
+        Get-NetworkStatistic -Name "Network Adapters" -Command {
+            Get-NetAdapter | Format-Table Name, Status, LinkSpeed -AutoSize
+        }
+
+        # IP Configuration
+        Get-NetworkStatistic -Name "IP Configuration" -Command {
+            Get-NetIPAddress | Format-Table IPAddress, PrefixLength, InterfaceAlias -AutoSize
+        }
+
+        # Data Throughput and Packet Statistics
+        Get-NetworkStatistic -Name "Data Throughput and Packet Stats" -Command {
+            Get-NetAdapterStatistics | Format-Table Name, PacketsReceived, PacketsSent, BytesReceived, BytesSent -AutoSize
+        }
+
+        Start-Sleep -Seconds 1
     }
-
-    # IP Configuration
-    Get-NetworkStatistic -Name "IP Configuration" -Command {
-        Get-NetIPAddress | Format-Table IPAddress, PrefixLength, InterfaceAlias -AutoSize
-    }
-
-    # Data Throughput and Packet Statistics
-    Get-NetworkStatistic -Name "Data Throughput and Packet Stats" -Command {
-        Get-NetAdapterStatistics | Format-Table Name, PacketsReceived, PacketsSent, BytesReceived, BytesSent -AutoSize
-    }
-
-    Start-Sleep -Seconds 1
 }

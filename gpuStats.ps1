@@ -15,20 +15,20 @@ function Get-GPUStatistic {
     }
 }
 
-while ($true) {
-    Clear-Host
-    Write-Host "╔═══════════════════════════════════╗"
-    Write-Host "║         GPU Statistics           ║"
-    Write-Host "╚═══════════════════════════════════╝"
+function Run-GPUStats {
+    while ($true) {
+        Display-Title  # Display the title
+        Write-Host "GPU Statistics:`n"
 
-    # Placeholder for GPU Utilization - Example of integration with a tool like NVIDIA-smi or similar
-    Get-GPUStatistic -Name "GPU Utilization" -Command { "Not available - requires tool integration" }
+        # Placeholder for GPU Utilization
+        Get-GPUStatistic -Name "GPU Utilization" -Command { "Not available - requires tool integration" }
 
-    # Placeholder for additional GPU stats
-    Get-GPUStatistic -Name "GPU Temperature" -Command { "Not available - requires tool integration" }
-    Get-GPUStatistic -Name "Memory Usage" -Command { "Not available - requires tool integration" }
-    Get-GPUStatistic -Name "Clock Speeds" -Command { "Not available - requires tool integration" }
-    Get-GPUStatistic -Name "Fan Speed" -Command { "Not available - requires tool integration" }
+        # Placeholder for additional GPU stats
+        Get-GPUStatistic -Name "GPU Temperature" -Command { "Not available - requires tool integration" }
+        Get-GPUStatistic -Name "Memory Usage" -Command { "Not available - requires tool integration" }
+        Get-GPUStatistic -Name "Clock Speeds" -Command { "Not available - requires tool integration" }
+        Get-GPUStatistic -Name "Fan Speed" -Command { "Not available - requires tool integration" }
 
-    Start-Sleep -Seconds 1
+        Start-Sleep -Seconds 1
+    }
 }
