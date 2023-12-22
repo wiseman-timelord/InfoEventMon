@@ -1,6 +1,6 @@
 # PerforMancer-BaP7 Previously NetForm
 ## STATUS: 
-Under Development.
+Under Development (O_o/'
 <br>The, scripts for NetForm and bits of my other projects, will be, re-used and re-written in, Batch and PWSH 7.4. It will instead show themes of statistical output in text based display interface, each of the themes of stats will be in its own script, hence...
 - adding or removing a stat from each theme will be as simple as swapping around pwsh commands.
 - this will then be multi-platform program.
@@ -44,8 +44,11 @@ Enter your choice (1-0):
 - Batch Support for "PerforMancer-BaPs.Bat" Launcher.
 - [PWSH 7.4](https://github.com/PowerShell/PowerShell/releases/tag/v7.4.0) for other scripts, [here](https://github.com/PowerShell/PowerShell/releases/download/v7.4.0/PowerShell-7.4.0-win-x64.msi) is the `.msi` installer for Windows x64) 
 
+## Disclaimer
+This program is provided "as is" without warranties or support. Users are responsible for the content they, download and use, as well as, any resulting damage to, hardware or sanity.
 
-(O_o/'
+
+
 
 
 <BR>
@@ -54,6 +57,8 @@ Enter your choice (1-0):
 <BR>
 <BR>
 <BR>
+
+<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
 HERE IS THE OLD README.MD...
 
 
@@ -108,7 +113,3 @@ Pauses Out:0, Discards Out: 0, Errors Out: 0.
 2. Observe the real-time statistics for each network adapter, including data rates, total data, errors, discards, and pause frames.
 3. The script will continue to run, updating the statistics every 5 seconds, until manually terminated.
 4. The "NetForm.lnk" shortcut provided with preset arguements to run ".bat" on taskbar.
-
-## Disclaimer
-
-NetForm is designed to provide real-time monitoring of network adapter statistics. While it does not modify or interfere with network operations, users should be aware that the information provided is subject to the capabilities and configuration of the network adapters and underlying system. Interpretation and use of the data should be done with an understanding of networking principles and the specific network environment.
