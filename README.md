@@ -7,7 +7,7 @@ The, scripts for NetForm and bits of my other projects, will be, re-used and re-
 
 ## WORK:
 1. The scripts need converting from dot link to module, dot link no work.
-2. The stats to be used for each theme need to be determined and implemented.
+2. The stats to be used for each theme need to be, reviewed and detecided upon, and then implemented.
 3. Some method of breaking loop and returning to main menu.
 4. Layout improvement and code upgrades.
 5. Testing and Fixing.
