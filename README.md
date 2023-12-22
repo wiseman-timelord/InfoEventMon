@@ -6,11 +6,13 @@ The, scripts for NetForm and bits of my other projects, will be, re-used and re-
 - The loops will be in their own processes.
 
 ## WORK:
+- Features for next update...
 1. The scripts need converting from dot link to module, dot link no work.
-2. The stats to be used for each theme need to be, reviewed and decided upon, and then implemented.
-3. Some method of breaking loop and returning to main menu.
-4. Layout improvement and code upgrades.
-5. Testing and Fixing.
+- Work under way...
+1. The stats to be used for each theme need to be, reviewed and decided upon, and then implemented.
+2. Some method of breaking loop and returning to main menu.
+3. Layout improvement and code upgrades.
+4. Testing and Fixing.
 
 
 ## PREVIEW:
