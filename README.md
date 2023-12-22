@@ -1,6 +1,7 @@
 # NetForm
 ## Status:
-Working(ish). The batches for this program may only run on Windows 10 due to the different PowerShell launch commands required for various OS versions, that microsoft have bizarly chosen to use for each OS, and may cause endless launch loop on other systems.
+Development.
+<br>The scripts for NetForm have been tested to, run on Windows 10 and fail on Windows 8.1,  due to multiple reasons, these will later be investigated.
 
 ## Description
 NetForm is a PowerShell application designed for Windows users, providing real-time monitoring of network adapter statistics, including data rates, total data, errors, discards, and pause frames. 
