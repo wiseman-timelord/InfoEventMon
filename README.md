@@ -1,7 +1,10 @@
 # PerforMancer-BaPs Previously NetForm
 ## STATUS: 
 Under Development.
-<br>The scripts for NetForm will be, re-used and re-written in PWSH 7.4, and the batches will be designed for windows, 8.1 and 10. It will show themes of statistical output in text based display interface, each of the themes of stats will be in its own script, hence, adding or removing a stat from each theme will be as simple as swapping around a pwsh command, this will then be multi-platform app, .
+<br>The, scripts for NetForm and bits of my other projects, will be, re-used and re-written in PWSH 7.4. It will instead show themes of statistical output in text based display interface, each of the themes of stats will be in its own script, hence...
+- adding or removing a stat from each theme will be as simple as swapping around pwsh commands.
+- this will then be multi-platform program.
+- the loops will be in their own processes.
 
 ## PREVIEW:
 ```
