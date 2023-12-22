@@ -52,6 +52,40 @@ The, scripts for NetForm and bits of my other projects, will be, re-used and re-
 Enter your choice (1-0):
 
 ```
+```
+
+===================( PerforMancer-BaP7 )====================
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   Processor Statistics:
+
+                    Total CPU Load: 1%
+                  Internal Clock: 3800 MHz
+                  External Clock: 100 MHz
+
+
+
+
+
+
+
+
+
+
+
+
+```
 
 ## REQUIREMENTS:
 - Batch Support for `PerforMancer-BaP7.Bat` Launcher.
