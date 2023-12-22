@@ -6,7 +6,9 @@ The, scripts for NetForm and bits of my other projects, will be, re-used and re-
 - The loops will be in their own processes.
 
 ## WORK:
-The scripts need converting from dot link to module, dot link no work.
+1. The scripts need converting from dot link to module, dot link no work.
+2. The stats to be used for each theme need to be determined and implemented.
+3. Testing.
 
 ## PREVIEW:
 ```
