@@ -1,10 +1,10 @@
 @echo off
 
 :: INITIALIZATION
-mode con cols=60 lines=30
+mode con cols=60 lines=35
 color 0E
 echo.
-echo ===================( PerforMancer-BaPs )====================
+echo ===================( PerforMancer-BaP7 )====================
 echo.
 timeout /t 1 /nobreak >nul
 
@@ -19,4 +19,5 @@ echo.
 :: Exit Launcher
 echo.
 echo PowerShell Script Exited!
+Echo.
 pause
