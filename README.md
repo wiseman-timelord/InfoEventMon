@@ -2,9 +2,9 @@
 ## STATUS: 
 Under Development (O_o/'
 <br>The, scripts for NetForm and bits of my other projects, will be, re-used and re-written in, Batch and PWSH 7.4. It will instead show themes of statistical output in text based display interface, each of the themes of stats will be in its own script, hence...
-- adding or removing a stat from each theme will be as simple as swapping around pwsh commands.
-- this will then be multi-platform program.
-- the loops will be in their own processes.
+- Adding or removing, a stat from given themes will be simple.
+- Multi-platform compatibility with core scripts.
+- The loops will be in their own processes.
 
 ## PREVIEW:
 ```
