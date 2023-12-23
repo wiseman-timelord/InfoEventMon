@@ -12,7 +12,7 @@ function Display-Title {
     # Start-Sleep -Seconds 10   #-- keep for debug
 	Clear-Host
     Write-Host "`n===================( " -NoNewline -ForegroundColor Cyan
-    Write-Host "PerforMancer-BaP7" -NoNewline
+    Write-Host "Performancer-P7" -NoNewline
     Write-Host " )====================`n`n`n`n`n`n`n`n`n`n`n" -ForegroundColor Cyan
 }
 
