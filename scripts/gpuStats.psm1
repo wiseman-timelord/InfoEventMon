@@ -1,5 +1,3 @@
-update the script appropriately...
-
 function Get-GPUStatistic {
     param (
         [string]$Name,
@@ -18,12 +16,37 @@ function Get-GPUStatistic {
 }
 
 function Invoke-GPUStats {
-    while ($true) {
-       and available in the scope
-        Display-Title  # Display the title
-        Write-Host "GPU Statistics:`n"
+    $displayEscMessage = $true
 
+    while ($true) {
+        Display-Title
+
+        # GPU Statistics
+        Write-Host "GPU Statistics:`n"
         Write-Host "Not possible with only PWSH 7.4"
+
+        if ($displayEscMessage) {
+            Write-Host "`n`n`n`n`n`n`n`n`n`n`n`n`nPress Esc to break the loop..."
+        }
+
+        if ([console]::KeyAvailable) {
+            $key = [console]::ReadKey($true)
+            if ($key.Key -eq [ConsoleKey]::Escape) {
+                $displayEscMessage = $false
+                Clear-Host
+                Display-Title
+                Write-Host "`n`n`n`n`n`n`n`n`n`n`n`n`n`n`n`n`n`n`nPress, Space To Continue Or Esc For Main Menu: "
+                do {
+                    $key = [console]::ReadKey($true)
+                } while ($key.Key -ne [ConsoleKey]::Escape -and $key.Key -ne [ConsoleKey]::Spacebar)
+
+                if ($key.Key -eq [ConsoleKey]::Escape) {
+                    break
+                }
+
+                $displayEscMessage = $true
+            }
+        }
 
         Start-Sleep -Seconds 3
     }

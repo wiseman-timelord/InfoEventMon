@@ -16,6 +16,8 @@ function Get-CPUStatistic {
 }
 
 function Invoke-CPUStats {
+    $displayEscMessage = $true
+
     while ($true) {
         Display-Title
 
@@ -33,6 +35,29 @@ function Invoke-CPUStats {
 
         } catch {
             Write-Host "Error fetching CPU Stats"
+        }
+
+        if ($displayEscMessage) {
+            Write-Host "`n`n`n`n`n`n`n`n`n`n`n`n`nPress Esc to break the loop..."
+        }
+
+        if ([console]::KeyAvailable) {
+            $key = [console]::ReadKey($true)
+            if ($key.Key -eq [ConsoleKey]::Escape) {
+                $displayEscMessage = $false
+                Clear-Host
+                Display-Title
+                Write-Host "`n`n`n`n`n`n`n`n`n`n`n`n`n`n`n`n`n`n`nPress, Space To Continue Or Esc For Main Menu: "
+                do {
+                    $key = [console]::ReadKey($true)
+                } while ($key.Key -ne [ConsoleKey]::Escape -and $key.Key -ne [ConsoleKey]::Spacebar)
+
+                if ($key.Key -eq [ConsoleKey]::Escape) {
+                    break
+                }
+
+                $displayEscMessage = $true
+            }
         }
 
         Start-Sleep -Seconds 3
