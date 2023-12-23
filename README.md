@@ -1,7 +1,7 @@
 # Performancer-P7
 
 ## STATUS: Development (O_o/'
-Features for next update...
+Currently working on...
 1. Break loop then being presented with options, continue or return to main menu, so far its implemented in all scripts except audStats. 
 2. Check the netStats.psd1 is correct for the new functions in netStats.psm1.
 3. Can we make a placeholder version of Get-audStatistic for audStats.psm1, and again check if the audStats.psd1 requires and update.
