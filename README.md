@@ -1,4 +1,4 @@
-# PerforMancer-BaP7 Previously NetForm
+# PerforMancer-BaP7
 
 ## STATUS: Development (O_o/'
 Features for next update...
