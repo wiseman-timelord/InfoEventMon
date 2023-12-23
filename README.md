@@ -10,7 +10,7 @@ Currently working on...
 6. Decide on how we are going to get those, missing and extra, stats, I would like it to remain having, linux and windows, support, using typically available system stats for each OS, while detecting what OS is being used, that is instead of utilizing additional libraries.
 
 ## DESCRIPTION:
-Performancer-P7, developed from NetForm and similar projects, is a Batch and PWSH 7.4-based system monitoring tool. It offers a text-based interface for real-time CPU and network stats, with limited GPU and audio data due to PWSH 7.4 constraints. Its modular design allows for efficient, isolated processing of different system metrics, ensuring cross-platform compatibility and ease of use. The tool stands out for its dynamic updating capability, user-friendly interface, and customizable appearance, making it a practical solution for diverse system performance monitoring needs.
+Performancer-P7 is a Batch and PWSH 7.4-based system monitoring tool. It offers a text-based interface for real-time CPU and network stats, with limited GPU and audio data due to PWSH 7.4 constraints. Its modular design allows for efficient, isolated processing of different system metrics, ensuring cross-platform compatibility and ease of use. The tool stands out for its dynamic updating capability, user-friendly interface, and customizable appearance, making it a practical solution for diverse system performance monitoring needs.
 
 ## FEATURES:
 - **Comprehensive System Monitoring:** Offers real-time insights into key system performance metrics, including CPU load, clock speeds, network data transfer rates, and more.
