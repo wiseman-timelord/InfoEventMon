@@ -103,5 +103,8 @@ Press Esc to break the loop...
 - Batch Support for `Performancer-P7.Bat` Launcher.
 - [PWSH 7.4](https://github.com/PowerShell/PowerShell/releases/tag/v7.4.0) for other scripts (Windows x64 `.msi` installer [here](https://github.com/PowerShell/PowerShell/releases/download/v7.4.0/PowerShell-7.4.0-win-x64.msi)) 
 
+## NOTATION:
+This project was originally intended as the first of my attempts to merge smaller projects, specifically, NetForm and StatStream, however, this became somewhat impossible when I realised these programs, were, written in Python or required Windows components or required libraries. In order to replace the original programs, Performancer-P7 should have most of the same stats for, net and audio, we will see... 
+
 ## Disclaimer
 This program is provided "as is" without, warranties and/or support. Users are responsible for the content they, download and/or use, as well as, any resulting damage to, software and/or hardware.
