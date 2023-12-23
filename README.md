@@ -7,7 +7,8 @@ Currently working on...
 3. Can we make a placeholder version of Get-audStatistic for audStats.psm1, and again check if the audStats.psd1 requires and update.
 4. After adding the loop break procedures, the Layout will need correcting to fit the display.
 5. Need to set the console dimensinos in the main.ps1 script, so as to allow correct format when running the main.ps1 script without the batches.
-6. Decide on how we are going to get those, missing and extra, stats, I would like it to remain having, linux and windows, support, using typically available system stats for each OS, while detecting what OS is being used, that is instead of utilizing additional libraries.
+6. Decide on how we are going to get those, missing and extra, stats, I would like it to remain having, linux and windows, support, using typically available system stats for each OS, while detecting what OS is being used, that is instead of utilizing additional libraries. In order to replace the original programs, Performancer-P7 should have most of the same stats for, net and audio.
+
 
 ## DESCRIPTION:
 Performancer-P7 is a Batch and PWSH 7.4-based system monitoring tool. It offers a text-based interface for real-time CPU and network stats, with limited GPU and audio data due to PWSH 7.4 constraints. Its modular design allows for efficient, isolated processing of different system metrics, ensuring cross-platform compatibility and ease of use. The tool stands out for its dynamic updating capability, user-friendly interface, and customizable appearance, making it a practical solution for diverse system performance monitoring needs.
@@ -104,7 +105,7 @@ Press Esc to break the loop...
 - [PWSH 7.4](https://github.com/PowerShell/PowerShell/releases/tag/v7.4.0) for other scripts (Windows x64 `.msi` installer [here](https://github.com/PowerShell/PowerShell/releases/download/v7.4.0/PowerShell-7.4.0-win-x64.msi)) 
 
 ## NOTATION:
-This project was originally intended as the first of my attempts to merge smaller projects, specifically, NetForm and StatStream, however, this became somewhat impossible when I realised these programs, were, written in Python or required Windows components or required libraries. In order to replace the original programs, Performancer-P7 should have most of the same stats for, net and audio, we will see... 
+This project was originally intended as the first of my attempts to merge smaller projects, specifically, NetForm and StatStream, however, this became somewhat impossible to do pure in PWSH 7.4 when I realised these programs, were, written in Python or required Windows components or required libraries.
 
 ## Disclaimer
 This program is provided "as is" without, warranties and/or support. Users are responsible for the content they, download and/or use, as well as, any resulting damage to, software and/or hardware.
