@@ -27,7 +27,7 @@ Performancer-P7 is a Batch and PWSH 7.4-based system monitoring tool. It offers 
 4. The CPU and Network statistics modules provide some performance metrics, updated continuously. Note that GPU and Audio statistics are placeholders, demonstrating the limitations of PowerShell 7.4.
 5. If you are on the main menu, you may exit the program, select the 'Exit Program' option from the main menu.
 
-## PREVIEW:
+## INTERFACE:
 ```
 ===================( Performancer-P7 )====================
 
