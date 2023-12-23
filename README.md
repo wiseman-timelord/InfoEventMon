@@ -5,7 +5,9 @@ Features for next update...
 1. Break loop then being presented with options, continue or return to main menu, implemented in all scripts except audStats. 
 2. Check the netStats.psd1 is correct for the new functions in netStats.psm1.
 3. Can we make a placeholder version of Get-audStatistic for audStats.psm1, and again check if the audStats.psd1 requires and update.
-4. Decide on how we are going to get those, missing and extra, stats, I would like it to remain having, linux and windows, support, using typically available system stats for each OS, while detecting what OS is being used, that is instead of utilizing additional libraries.
+4. After adding the loop break procedures, the Layout will need correcting to fit the display.
+5. Need to set the console dimensinos in the main.ps1 script, so as to allow correct format when running the main.ps1 script without the batches.
+6. Decide on how we are going to get those, missing and extra, stats, I would like it to remain having, linux and windows, support, using typically available system stats for each OS, while detecting what OS is being used, that is instead of utilizing additional libraries.
 
 ## DESCRIPTION:
 PerforMancer-BaP7, developed from NetForm and similar projects, is a Batch and PowerShell 7.4-based system monitoring tool. It offers a text-based interface for real-time CPU and network stats, with limited GPU and audio data due to PWSH 7.4 constraints. Its modular design allows for efficient, isolated processing of different system metrics, ensuring cross-platform compatibility and ease of use. The tool stands out for its dynamic updating capability, user-friendly interface, and customizable appearance, making it a practical solution for diverse system performance monitoring needs.
