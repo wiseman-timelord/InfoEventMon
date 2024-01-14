@@ -107,6 +107,5 @@ Press Esc to break the loop...
 ## NOTATION:
 This project was originally intended as the first of my attempts to merge smaller projects, specifically, NetForm and StatStream, however, this became somewhat impossible to do pure in PWSH 7.4 when I realised these programs, were, written in Python or required Windows components or required libraries.
 
-### DISCLAIMER
-Read "Licence.Txt", its, what its there for and why its supplied with the package.
-
+## DISCLAIMER
+The "License.Txt" covers, this and relating, stuff.
