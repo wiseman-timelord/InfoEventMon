@@ -41,11 +41,11 @@ echo.
 echo.
 echo.
 echo.
+echo.
 echo                        1. Run InfoEventMon,
 echo.
 echo                      2. Check File Integrity,
 echo.
-echo                         X. Exit Launcher.
 echo.
 echo.
 echo.
