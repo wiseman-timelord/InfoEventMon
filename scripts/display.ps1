@@ -1,7 +1,7 @@
 # display.ps1
 
 function PrintProgramTitle {
-    Write-Host "`n=========================( PerfEvent )=========================`n"
+    Write-Host "`n=========================( PerfEventMon )=========================`n"
 }
 
 function PrintProgramSeparator {
@@ -22,15 +22,18 @@ function Show-MainMenu {
     Write-Host ""
     Write-Host "                    1. Performance Monitor"
     Write-Host ""
-    Write-Host "                    2. Recent Events Report"
+    Write-Host "                    2. Device Information"
+    Write-Host ""
+    Write-Host "                    3. Recent Events Report"
     Write-Host ""
     PrintProgramSeparator
-    $choice = Read-Host "Select, Options = 1-2, Exit = X: "
+    $choice = Read-Host "Select, Options = 1-3, Exit = X: "
 
     switch ($choice) {
         "1" { Show-PerformanceMonitorMenu }
-        "2" { Show-RecentEventsMenu }
-        "x" { script-FinalizationCode; exit }
+        "2" { Show-DeviceInfoMenu }
+        "3" { Show-RecentEventsMenu }
+        "X", "x" { script-FinalizationCode; exit }
         default {
             Write-Host "Invalid choice. Please try again."
             Start-Sleep -Seconds 2
@@ -38,6 +41,7 @@ function Show-MainMenu {
         }
     }
 }
+
 
 function Show-PerformanceMonitorMenu {
     Clear-Host
@@ -55,6 +59,24 @@ function Show-PerformanceMonitorMenu {
             Write-Host "Invalid choice. Please try again."
             Start-Sleep -Seconds 2
             Show-PerformanceMonitorMenu
+        }
+    }
+}
+
+function Show-DeviceInfoMenu {
+    Clear-Host
+    PrintProgramTitle
+    Write-Host "Device Information currently under development..."
+    PrintProgramSeparator
+    Write-Host "B. Back"
+    $choice = Read-Host "Select, Option = B: "
+
+    switch ($choice) {
+        "B", "b" { Show-MainMenu }
+        default {
+            Write-Host "Invalid choice. Please try again."
+            Start-Sleep -Seconds 2
+            Show-DeviceInfoMenu
         }
     }
 }
