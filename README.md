@@ -27,11 +27,11 @@ The Main Menu (Alpha)...
 
 
 
-                     1. Performance Monitor
+                     1. Performance Monitor,
 
-                     2. Device Information
+                     2. Device Information,
 
-                     3. Recent Events Report
+                     3. Recent Events Report.
 
 
 
