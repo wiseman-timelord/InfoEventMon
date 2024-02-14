@@ -1,10 +1,11 @@
 # InfoEventMon
 
 ### Status
-Alpha, Consolidating, Performancer and WhaGoWan, into a single program "PerfEvent", for system monitoring and recent events.
-- Produce initial scripts
-- Work on scripts.
-
+Alpha, Consolidating, Performancer and WhaGoWan, into a single program "PerfEvent", for system monitoring and recent events...
+1. Progress submenu options for "Performance Monitor" to completion. This includes..
+- Test and fix "Processor Monitoring".
+- Test and fix "Network Monitoring".
+2. Progress submenu options for "Device Information" to completion; this may have to result in usage of DirectX.
 
 ## Description
 InfoEventMon Will become a tool for, System Information, Device Monitoring, System Events, in one place, it will all be done through cmdlets, so, dont expect much.
