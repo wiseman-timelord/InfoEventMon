@@ -37,7 +37,7 @@ function Get-EventsReport {
     Write-Host "..$eventTypeName Events Received.`n"
     Start-Sleep -Seconds 1
 
-    $fileName = if ($EventType -eq "Application") { "ProgramEvents.Txt" } else { "SystemEvents.Txt" }
+    $fileName = if ($EventType -eq "Application") { "ProgramEvents.Log" } else { "SystemEvents.Log" }
     Write-Host "Exporting Report to $fileName.."
     $report = @()
     foreach ($event in $events) {
