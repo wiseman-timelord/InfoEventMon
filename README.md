@@ -4,7 +4,6 @@
 Alpha, Consolidating, Performancer and WhaGoWan, into a single program "PerfEvent", for system monitoring and recent events.
 - Produce initial scripts
 - Work on scripts.
-- introduce new main menu item "Drirect X Stats~", to extend the stat/info past the limits of cmdlets.
 
 
 ## Description
@@ -21,13 +20,16 @@ To be detailed.
 ## Usage
 To be detailed.
 
-### REQUIREMENTS:
+### Requirements
 To be detailed.
 - Batch Support for `Performancer.Bat` Launcher.
 - [PWSH 7.4](https://github.com/PowerShell/PowerShell/releases/tag/v7.4.0) for other scripts (Windows x64 `.msi` installer [here](https://github.com/PowerShell/PowerShell/releases/download/v7.4.0/PowerShell-7.4.0-win-x64.msi)) 
 
-### NOTATION:
+## Notation
 To be detailed.
 
-## DISCLAIMER
+### Development
+- introduce new main menu item "Drirect X Stats~", to extend the stat/info past the limits of cmdlets.
+
+## Disclaimer
 This software is subject to the terms in License.Txt, covering usage, distribution, and modifications. For full details on your rights and obligations, refer to License.Txt.
