@@ -13,8 +13,19 @@ InfoEventMon Will become a tool for, System Information, Device Monitoring, Syst
 To be Detailed.
 
 ### Preview
+Alpha version...
 ```
-To be detailed.
+
+=========================( PerfEvent )=========================
+
+
+                    1. Performance Monitor
+
+                    2. Recent Events Report
+
+---------------------------------------------------------------
+Select, Options = 1-2, Exit = X: :
+
 ```
 
 ## Usage
