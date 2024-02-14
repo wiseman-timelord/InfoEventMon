@@ -13,7 +13,7 @@ InfoEventMon Will become a tool for, System Information, Device Monitoring, Syst
 To be Detailed.
 
 ### Preview
-Alpha version...
+The Main Menu (Alpha)...
 ```
 =========================( PerfEventMon )=========================
 
