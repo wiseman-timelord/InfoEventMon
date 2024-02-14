@@ -1,7 +1,7 @@
 # display.ps1
 
 function PrintProgramTitle {
-    Write-Host "`n=========================( PerfEventMon )=========================`n"
+    Write-Host "`n=========================( InfoEventMon )=========================`n"
 }
 
 function PrintProgramSeparator {
@@ -18,14 +18,15 @@ function Set-ConfigureDisplay {
 }
 
 function Show-MainMenu {
-    PrintProgramTitle
+    Clear-Host
+	PrintProgramTitle
     Write-Host "`n`n`n`n`n`n`n`n`n"
-    Write-Host "                     1. Performance Monitor`n"
-    Write-Host "                     2. Device Information`n"
-    Write-Host "                     3. Recent Events Report"
+    Write-Host "                     1. Performance Monitor,`n"
+    Write-Host "                     2. Device Information,`n"
+    Write-Host "                     3. Recent Events Report."
     Write-Host "`n`n`n`n`n`n`n`n`n"
     PrintProgramSeparator
-    $choice = Read-Host "Select, Options = 1-3, Exit = X: "
+    $choice = Read-Host "Select, Options = 1-3, Exit = X"
 
     switch ($choice) {
         "1" { Show-PerformanceMonitorMenu }
@@ -45,11 +46,11 @@ function Show-PerformanceMonitorMenu {
     Clear-Host
     PrintProgramTitle
 	Write-Host "`n`n`n`n`n`n`n`n`n`n"
-    Write-Host "                    1. Processor Statistics`n"
-    Write-Host "                    2. Network Statistics"
+    Write-Host "                    1. Processor Statistics,`n"
+    Write-Host "                    2. Network Statistics."
 	Write-Host "`n`n`n`n`n`n`n`n`n`n"
     PrintProgramSeparator
-    $choice = Read-Host "Select, Options = 1-2, Back = B: "
+    $choice = Read-Host "Select, Options = 1-2, Back = B"
 
     switch ($choice) {
         "1" { Invoke-CPUStats }
@@ -66,10 +67,14 @@ function Show-PerformanceMonitorMenu {
 function Show-DeviceInfoMenu {
     Clear-Host
     PrintProgramTitle
-    Write-Host "Device Information currently under development..."
+    Write-Host "`n`n`n`n`n`n`n`n"
+	Write-Host "                    1. Processor Information,`n"
+	Write-Host "                    2. Graphics Information,`n"
+	Write-Host "                    3. Audio Information,`n"
+    Write-Host "                    4. Network Information."
+	Write-Host "`n`n`n`n`n`n`n`n"
     PrintProgramSeparator
-    Write-Host "B. Back"
-    $choice = Read-Host "Select, Option = B: "
+    $choice = Read-Host "Select, Options = 1-4, Back = B"
 
     switch ($choice) {
         "b" { Show-MainMenu }
@@ -84,36 +89,17 @@ function Show-DeviceInfoMenu {
 function Show-RecentEventsMenu {
     Clear-Host
     PrintProgramTitle
-    Write-Host "1. Program Events"
-    Write-Host "2. System Events"
+    Write-Host "`n`n`n`n`n`n`n`n`n`n"
+	Write-Host "                     1. Recent Program Events,`n"
+    Write-Host "                     2. Recent System Events."
+	Write-Host "`n`n`n`n`n`n`n`n`n`n"
     PrintProgramSeparator
-    $choice = Read-Host "Select, Options = 1-2, Back = B: "
-
-    switch ($choice) {
-        "1" { .\utility.ps1; Get-ApplicationEvents }
-        "2" { .\utility.ps1; Get-SystemEvents }
-        "b" { Show-MainMenu }
-        default {
-            Write-Host "Invalid choice. Please try again."
-            Start-Sleep -Seconds 2
-            Show-RecentEventsMenu
-        }
-    }
-}
-
-function Show-RecentEventsMenu {
-    Clear-Host
-    PrintProgramTitle
-    Write-Host "1. Application Events"
-    Write-Host "2. System Events"
-    PrintProgramSeparator
-	Write-Host "Select, Options = 1-2, Back = B:"
-    $choice = Read-Host
+    $choice = Read-Host "Select, Options = 1-2, Back = B"
 
     switch ($choice) {
         "1" { Get-ApplicationEvents }
         "2" { Get-SystemEvents }
-        "x" { Show-MainMenu }
+        "b" { Show-MainMenu }
         default {
             Write-Host "Invalid choice. Please try again."
             Start-Sleep -Seconds 2

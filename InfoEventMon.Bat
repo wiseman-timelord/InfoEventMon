@@ -44,7 +44,7 @@ echo.
 echo.
 echo                        1. Run InfoEventMon,
 echo.
-echo                      2. Check File Integrity,
+echo                        2. Check Integrity.
 echo.
 echo.
 echo.
