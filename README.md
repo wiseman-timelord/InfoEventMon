@@ -15,16 +15,17 @@ To be Detailed.
 ### Preview
 Alpha version...
 ```
-
-=========================( PerfEvent )=========================
+=========================( PerfEventMon )=========================
 
 
                     1. Performance Monitor
 
-                    2. Recent Events Report
+                    2. Device Information
+
+                    3. Recent Events Report
 
 ---------------------------------------------------------------
-Select, Options = 1-2, Exit = X: :
+Select, Options = 1-3, Exit = X: :
 
 ```
 
