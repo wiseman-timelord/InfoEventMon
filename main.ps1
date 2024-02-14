@@ -25,11 +25,7 @@ function Start-MainLoop {
     do {
         Clear-Host
         Show-MainMenu
-
-        # The handling of user input is now fully managed within the display.ps1 script
-        # This simplifies the main script, focusing on application initialization and looping
-
-    } while ($true) # The exit condition is now managed within the Show-MainMenu function based on user input
+    } while ($true)
 }
 
 # Application Entry Point

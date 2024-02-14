@@ -21,24 +21,32 @@ function Invoke-NETStats {
     Start-Sleep -Seconds 3
 }
 
-function Get-ApplicationEvents {
-    # Fetch and display the last 20 application events functionality remains
-    Clear-Host
-    Write-Host "Application Events:"
-    $applicationEvents = Get-WinEvent -LogName 'Application' -MaxEvents 20 | Select-Object TimeCreated, Id, LevelDisplayName, Message
-    foreach ($event in $applicationEvents) {
-        Write-Host "Time: $($event.TimeCreated), ID: $($event.Id), Level: $($event.LevelDisplayName), Message: $($event.Message.split("`n")[0])"
-    }
-    Start-Sleep -Seconds 3
-}
 
-function Get-SystemEvents {
-    # Fetch and display the last 20 system events functionality remains
+function Get-EventsReport {
+    param (
+        [ValidateSet("Application", "System")]
+        [string]$EventType
+    )
     Clear-Host
-    Write-Host "System Events:"
-    $systemEvents = Get-WinEvent -LogName 'System' -MaxEvents 20 | Select-Object TimeCreated, Id, LevelDisplayName, Message
-    foreach ($event in $systemEvents) {
-        Write-Host "Time: $($event.TimeCreated), ID: $($event.Id), Level: $($event.LevelDisplayName), Message: $($event.Message.split("`n")[0])"
+    PrintProgramTitle
+    $eventTypeName = if ($EventType -eq "Application") { "Program" } else { "System" }
+    Write-Host "Requesting $eventTypeName Events.."
+
+    $logName = "$EventType"
+    $events = Get-WinEvent -LogName $logName -MaxEvents 20 | Select-Object TimeCreated, Id, LevelDisplayName, Message
+    Write-Host "..$eventTypeName Events Received.`n"
+    Start-Sleep -Seconds 1
+
+    $fileName = if ($EventType -eq "Application") { "ProgramEvents.Txt" } else { "SystemEvents.Txt" }
+    Write-Host "Exporting Report to $fileName.."
+    $report = @()
+    foreach ($event in $events) {
+        $report += "Time: $($event.TimeCreated), ID: $($event.Id), Level: $($event.LevelDisplayName), Message: $($event.Message.split("`n")[0])"
     }
-    Start-Sleep -Seconds 3
+    $report | Out-File -FilePath $fileName -Force
+    Write-Host "..$fileName Report Exported.`n"
+    Start-Sleep -Seconds 1
+    Write-Host "Check Event Report File; Returning To Menu...`n"
+    Start-Sleep -Seconds 2
+    Show-RecentEventsMenu
 }

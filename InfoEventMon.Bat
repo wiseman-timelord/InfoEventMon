@@ -16,6 +16,14 @@ if exist ".\Errors-Crash.Log" (
     echo ..Deleting Log..
     del ".\Errors-Crash.Log"
 )
+if exist ".\ProgramEvents.Txt" (
+    echo ..Program Events Log..
+    del ".\ProgramEvents.Txt"
+)
+if exist ".\SystemEvents.Txt" (
+    echo ..System Events Log..
+    del ".\SystemEvents.Txt"
+)
 echo ..Cleaning Done.
 echo.
 timeout /t 1 /nobreak >nul
