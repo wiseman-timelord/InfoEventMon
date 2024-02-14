@@ -57,6 +57,7 @@ Select, Options = 1-3, Exit = X: :
 ### Requirements
 To be detailed.
 - Windows Environment supporting, Batch operations & Powershell.
+- .Net 2.0+ - The break from loop code is impossible without this.
 - If your version of Powershell don't work, then install, [PWSH 7.4](https://github.com/PowerShell/PowerShell/releases/tag/v7.4.0) (and make sure its on PATH) or [PWSH 7.4 MSI](https://github.com/PowerShell/PowerShell/releases/download/v7.4.0/PowerShell-7.4.0-win-x64.msi). 
 
 ## Notation
