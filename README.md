@@ -18,11 +18,29 @@ Alpha version...
 =========================( PerfEventMon )=========================
 
 
-                    1. Performance Monitor
 
-                    2. Device Information
 
-                    3. Recent Events Report
+
+
+
+
+
+
+
+                     1. Performance Monitor
+
+                     2. Device Information
+
+                     3. Recent Events Report
+
+
+
+
+
+
+
+
+
 
 ---------------------------------------------------------------
 Select, Options = 1-3, Exit = X: :
