@@ -1,13 +1,9 @@
-# Performancer
+# PerfEvent
 
 ## STATUS: Development (O_o/'
-Currently working on...
-1. Break loop then being presented with options, continue or return to main menu, so far its implemented in all scripts except audStats. 
-2. Check the netStats.psd1 is correct for the new functions in netStats.psm1.
-3. Can we make a placeholder version of Get-audStatistic for audStats.psm1, and again check if the audStats.psd1 requires and update.
-4. After adding the loop break procedures, the Layout will need correcting to fit the display.
-5. Need to set the console dimensinos in the main.ps1 script, so as to allow correct format when running the main.ps1 script without the batches.
-6. Decide on how we are going to get those, missing and extra, stats, I would like it to remain having, linux and windows, support, using typically available system stats for each OS, while detecting what OS is being used, that is instead of utilizing additional libraries. In order to replace the original programs, Performancer should have most of the same stats for, net and audio.
+Alpha, Consolidating, Performancer and WhaGoWan, into a single program "PerfEvent", for system monitoring and recent events.
+- Produce initial scripts
+- Work on scripts.
 
 
 ## DESCRIPTION:
