@@ -4,6 +4,7 @@
 Alpha, Consolidating, Performancer and WhaGoWan, into a single program "PerfEvent", for system monitoring and recent events.
 - Produce initial scripts
 - Work on scripts.
+- introduce new main menu item "Drirect X Stats~", to extend the stat/info past the limits of cmdlets.
 
 
 ## DESCRIPTION:
