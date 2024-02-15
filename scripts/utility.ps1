@@ -8,8 +8,8 @@ function Invoke-CPUMonitoring {
         PrintProgramTitle
         
         Write-Host "CPU Name: $($cpuStats.Name)"
-        Write-Host "Total Threads: $($cpuStats.Threads)"  # Display the number of threads
-        Write-Host "Max Clock Speed: $($cpuStats.MaxSpeed)MHz"
+        Write-Host "Maximum Threads: $($cpuStats.Threads)"  # Display the number of threads
+        Write-Host "Maximum Clock Speed: $($cpuStats.MaxSpeed)MHz"
         Write-Host "Current Clock Speed: $($cpuStats.CurrentSpeed)MHz"
         Write-Host "CPU Usage: $($cpuStats.Usage)%"
         Write-Host ""
