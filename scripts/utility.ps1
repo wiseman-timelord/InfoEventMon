@@ -111,128 +111,6 @@ function Get-NetworkStatistics {
     }
 }
 
-function Show-SystemInformation {
-    Clear-Host
-    PrintProgramTitle
-    Ensure-AndDisplayReportStatus -ReportPath $Global:reportPath_s9v
-    $content = Get-Content -Path $Global:reportPath_s9v
-    $start = $content | Select-String -Pattern "^------------------$" -Context 0,1 | Where-Object { $_.Context.PostContext -match "System Information" } | Select-Object -First 1 | ForEach-Object { $_.LineNumber }
-    $end = $content | Select-String -Pattern "^------------------$" -Context 0 | Where-Object { $_.LineNumber -gt $start } | Select-Object -First 1 | ForEach-Object { $_.LineNumber }
-    $systemInfoKeys = @(
-        "Machine name:",
-        "Operating System:",
-        "Language:",
-        "System Model:",
-        "BIOS:",
-        "Processor:",
-        "Memory:",
-        "Windows Dir:",
-        "DirectX Version:"
-    )
-    foreach ($key in $systemInfoKeys) {
-        $line = $content[$start..$end] | Where-Object { $_ -match $key } | Select-Object -First 1
-        if ($line) {
-            Write-Host ($line.TrimStart())
-        }
-    }
-    Shorter-FunctionsPromptHelper
-}
-
-
-function Show-GraphicsInformation {
-    Clear-Host
-    PrintProgramTitle
-
-    # Utilize common logic for ensuring and displaying the report's status
-    Ensure-AndDisplayReportStatus -ReportPath $Global:reportPath_s9v
-
-    # Unique logic for displaying Graphics Information from the report
-    # Placeholder for specific parsing and displaying graphics information
-    Write-Host "Graphics Information:"
-    # Example: Filter and display only relevant graphics details from the report
-    Get-Content -Path $Global:reportPath_s9v | Where-Object { $_ -match "Card name" -or $_ -match "Manufacturer" } | Out-Host
-    Shorter-FunctionsPromptHelper
-}
-
-function Show-AudioInformation {
-    Clear-Host
-    PrintProgramTitle
-
-    # Utilize common logic for ensuring and displaying the report's status
-    Ensure-AndDisplayReportStatus -ReportPath $Global:reportPath_s9v
-
-    # Unique logic for displaying Audio Information from the report
-    Write-Host "Audio Information:"
-    # Example: Filter and display only relevant audio details from the report
-    Get-Content -Path $Global:reportPath_s9v | Where-Object { $_ -match "Sound Devices" -or $_ -match "Description" } | Out-Host
-    Shorter-FunctionsPromptHelper
-}
-
-
-function Shorter-FunctionsPromptHelper {
-	PrintProgramSeparator
-    Write-Host "Select; Back = B:" -NoNewline
-    do {
-        $key = [console]::ReadKey($true)
-    } while ($key.Key -ne "B")
-    Write-Host "`nReturning To Submenu..."
-    Start-Sleep -Seconds 1
-    Show-DeviceInfoMenu
-}
-
-
-function Ensure-AndDisplayReportStatus {
-    param (
-        [string]$ReportPath
-    )
-    Write-Host "Check Report Status.."
-    if (-not (Test-RecentReport -ReportPath $ReportPath)) {
-        Write-Host "..Retrieving New Report.."
-        Invoke-GenerateReport -ReportPath $ReportPath
-    } else {
-        Write-Host "..Using Existing Report.`n"
-    }
-}
-
-function Test-RecentReport {
-    param (
-        [string]$ReportPath
-    )
-    if (Test-Path -Path $ReportPath) {
-        $fileCreationTime = (Get-Item $ReportPath).LastWriteTime
-        $currentTime = Get-Date
-        $timeDifference = $currentTime.Subtract($fileCreationTime)
-        return $timeDifference.TotalHours -le 1
-    }
-    return $false
-}
-
-function Invoke-GenerateReport {
-    param (
-        [string]$ReportPath
-    )
-    $cacheDir = Split-Path -Path $ReportPath -Parent
-    if (-not (Test-Path -Path $cacheDir)) {
-        New-Item -ItemType Directory -Path $cacheDir | Out-Null
-    }
-    Start-Process "dxdiag" -ArgumentList "/dontskip /t `"$ReportPath`"" -NoNewWindow -Wait
-    $timeoutSeconds = 60
-    $stopwatch = [System.Diagnostics.Stopwatch]::StartNew()
-    while (-not (Test-Path -Path $ReportPath) -and $stopwatch.Elapsed.TotalSeconds -lt $timeoutSeconds) {
-        Start-Sleep -Seconds 1
-    }
-    if (Test-Path -Path $ReportPath) {
-        Write-Host "..Report Created: $ReportPath`n"
-    } else {
-        Write-Host "..Report Creation Failed!`n"
-		Start-Sleep -Seconds 3
-		PrintProgramSeparator
-		Write-Host "`nReturning To Submenu..."
-        Start-Sleep -Seconds 1
-        Show-DeviceInfoMenu		
-    }
-}
-
 function Get-EventsReport {
     param (
         [ValidateSet("Application", "System")]
@@ -262,14 +140,194 @@ function Get-EventsReport {
     Show-RecentEventsMenu
 }
 
-function Ensure-CacheDirectory {
-    Write-Host "Checking For .\cache.."
-	if (-not (Test-Path -Path ".\cache")) {
-        Write-Host "..Not Found, Creating.."
-        New-Item -ItemType Directory -Path ".\cache" | Out-Null
-        Write-Host "...\cache Dir Created."
+
+
+
+
+
+
+function Show-SystemInformation {
+    Clear-Host
+    PrintProgramTitle
+    Ensure-AndDisplayReportStatus -ReportPath $Global:reportPath_s9v
+
+    Write-Host "System Information:"
+    $systemInfoKeys = @(
+        "Machine name:",
+        "Operating System:",
+        "Language:",
+        "System Model:",
+        "BIOS:",
+        "Processor:",
+        "Memory:",
+        "Windows Dir:",
+        "DirectX Version:"
+    )
+    foreach ($key in $systemInfoKeys) {
+        if ($Global:FetchedInfo1_9vb[$key]) {
+            Write-Host ($Global:FetchedInfo1_9vb[$key].TrimStart())
+        }
+    }
+    Shorter-FunctionsPromptHelper
+}
+
+function Show-GraphicsInformation {
+    Clear-Host
+    PrintProgramTitle
+    Ensure-AndDisplayReportStatus -ReportPath $Global:reportPath_s9v
+
+    Write-Host "Graphics Information:"
+    for ($i = 1; $i -le 2; $i++) {
+        $deviceInfo = if ($i -eq 1) { $Global:FetchedInfo1_9vb } else { $Global:FetchedInfo2_gv3 }
+        if ($deviceInfo -and $deviceInfo["Graphics Card $i"]) {
+            Write-Host "Graphics Card $i Details:"
+            $deviceInfo["Graphics Card $i"].GetEnumerator() | ForEach-Object {
+                Write-Host "$($_.Key): $($_.Value)"
+            }
+            Write-Host ""
+        }
+        if ($deviceInfo -and $deviceInfo["Monitor $i"]) {
+            Write-Host "Monitor $i Details:"
+            $deviceInfo["Monitor $i"].GetEnumerator() | ForEach-Object {
+                Write-Host "$($_.Key): $($_.Value)"
+            }
+            Write-Host ""
+        }
+    }
+    Shorter-FunctionsPromptHelper
+}
+
+function Show-AudioInformation {
+    Clear-Host
+    PrintProgramTitle
+    Ensure-AndDisplayReportStatus -ReportPath $Global:reportPath_s9v
+
+    Write-Host "Audio Information:"
+    for ($i = 1; $i -le 2; $i++) {
+        $deviceInfo = if ($i -eq 1) { $Global:FetchedInfo1_9vb } else { $Global:FetchedInfo2_gv3 }
+        if ($deviceInfo -and $deviceInfo["Audio Device $i"]) {
+            Write-Host "Audio Device $i Details:"
+            $deviceInfo["Audio Device $i"].GetEnumerator() | ForEach-Object {
+                Write-Host "$($_.Key): $($_.Value)"
+            }
+            Write-Host ""
+        }
+    }
+    Shorter-FunctionsPromptHelper
+}
+
+
+function Shorter-FunctionsPromptHelper {
+	PrintProgramSeparator
+    Write-Host "Select; Back = B:" -NoNewline
+    do {
+        $key = [console]::ReadKey($true)
+    } while ($key.Key -ne "B")
+    Write-Host "`nReturning To Submenu..."
+    Start-Sleep -Seconds 1
+    Show-DeviceInfoMenu
+}
+
+function Ensure-AndDisplayReportStatus {
+    param (
+        [string]$ReportPath
+    )
+    Write-Host "Check Report Status.."
+    if (-not (Test-RecentReport -ReportPath $ReportPath)) {
+        Write-Host "..Retrieving New Report.."
+        Invoke-GenerateReport -ReportPath $ReportPath
+        PopulateGlobalFetchedInfo -ReportPath $ReportPath
     } else {
-        Write-Host ".\cache Dir Present."
+        Write-Host "..Using Existing Report.`n"
+        PopulateGlobalFetchedInfo -ReportPath $ReportPath
     }
 }
+
+function PopulateGlobalFetchedInfo {
+    param ([string]$ReportPath)
+    $content = Get-Content -Path $ReportPath
+
+    # Clear existing data
+    $Global:FetchedInfo1_9vb.Clear()
+    $Global:FetchedInfo2_gv3.Clear()
+
+    # Function to extract and assign device information
+    function ExtractDeviceInfo {
+        param ([string]$Content, [int]$DeviceIndex, [hashtable]$DeviceInfo)
+
+        $lines = $Content -split "`r`n"
+        $isDeviceSection = $false
+        $deviceCount = 0
+
+        foreach ($line in $lines) {
+            if ($line -match "---------------") {
+                if ($isDeviceSection -and $deviceCount -eq $DeviceIndex) { break }
+                $isDeviceSection = $false
+            }
+            if ($line -match "Card name:|Device Key:|Manufacturer:|Chip type:|DAC type:|Display Memory:|Dedicated Memory:|Shared Memory:|Current Mode:|HDR Support:|Driver Provider:|Driver Version:|Driver Date:|Audio Device:|Min/Max Sample Rate:") {
+                if (-not $isDeviceSection) {
+                    $isDeviceSection = $true
+                    $deviceCount++
+                    if ($deviceCount -gt $DeviceIndex) { continue }
+                }
+                if ($deviceCount -eq $DeviceIndex) {
+                    $keyValue = $line -split ":", 2
+                    $DeviceInfo[$keyValue[0].Trim()] = $keyValue[1].Trim()
+                }
+            }
+        }
+    }
+
+    # Extract information for the first and second devices in both Display and Sound Devices sections
+    $displayContent = $content | Select-String "Display Devices" -Context 0,1000
+    ExtractDeviceInfo -Content $displayContent.Context.PostContext -DeviceIndex 1 -DeviceInfo $Global:FetchedInfo1_9vb
+    ExtractDeviceInfo -Content $displayContent.Context.PostContext -DeviceIndex 2 -DeviceInfo $Global:FetchedInfo2_gv3
+
+    $soundContent = $content | Select-String "Sound Devices" -Context 0,1000
+    ExtractDeviceInfo -Content $soundContent.Context.PostContext -DeviceIndex 1 -DeviceInfo $Global:FetchedInfo1_9vb
+    ExtractDeviceInfo -Content $soundContent.Context.PostContext -DeviceIndex 2 -DeviceInfo $Global:FetchedInfo2_gv3
+}
+
+
+function Test-RecentReport {
+    param (
+        [string]$ReportPath
+    )
+    if (Test-Path -Path $ReportPath) {
+        $fileCreationTime = (Get-Item $ReportPath).LastWriteTime
+        $currentTime = Get-Date
+        $timeDifference = $currentTime.Subtract($fileCreationTime)
+        return $timeDifference.TotalHours -le 1
+    }
+    return $false
+}
+
+
+function Invoke-GenerateReport {
+    param (
+        [string]$ReportPath
+    )
+    $cacheDir = Split-Path -Path $ReportPath -Parent
+    if (-not (Test-Path -Path $cacheDir)) {
+        New-Item -ItemType Directory -Path $cacheDir | Out-Null
+    }
+    Start-Process "dxdiag" -ArgumentList "/dontskip /t `"$ReportPath`"" -NoNewWindow -Wait
+    $timeoutSeconds = 60
+    $stopwatch = [System.Diagnostics.Stopwatch]::StartNew()
+    while (-not (Test-Path -Path $ReportPath) -and $stopwatch.Elapsed.TotalSeconds -lt $timeoutSeconds) {
+        Start-Sleep -Seconds 1
+    }
+    if (Test-Path -Path $ReportPath) {
+        Write-Host "..Report Created: $ReportPath`n"
+    } else {
+        Write-Host "..Report Creation Failed!`n"
+		Start-Sleep -Seconds 3
+		PrintProgramSeparator
+		Write-Host "`nReturning To Submenu..."
+        Start-Sleep -Seconds 1
+        Show-DeviceInfoMenu		
+    }
+}
+
+
 

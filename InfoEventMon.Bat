@@ -11,7 +11,7 @@ set ErrorLog=Errors-Crash.Log
 echo.
 echo =========================( InfoEventMon )==========================
 echo.
-echo Performing Maintenance..
+echo Maintenance..
 if exist ".\Errors-Crash.Log" (
     echo ..Deleting Log..
     del ".\Errors-Crash.Log"
@@ -25,6 +25,16 @@ if exist ".\SystemEvents.Log" (
     del ".\SystemEvents.Log"
 )
 echo ..Cleaning Done.
+echo.
+timeout /t 1 /nobreak >nul
+echo Checking Cache Dir..
+if not exist ".\cache\" (
+    echo ..Not Found, Creating..
+    mkdir ".\cache"
+    echo ..Cache Dir Created.
+) else (
+    echo ..Cache Dir Present.
+)
 echo.
 timeout /t 1 /nobreak >nul
 echo Launcher Initialized...
