@@ -16,7 +16,7 @@ InfoEventMon Will become a tool for, System Information, Device Monitoring, Syst
 **Application/System Events:** Export recent events to a relevantly relating `ProgramEvents.Txt/SystemEvents.Txt`, with options to launch notepad and view it.  
 
 ### Preview
-The Main Menu...
+The Main Menu (those are submenus)...
 ```
 =========================( PerfEventMon )=========================
 
@@ -58,23 +58,6 @@ Maximum Threads: 24
 Maximum Clock Speed: 3801MHz
 Current Clock Speed: 3793MHz
 CPU Usage: 9.6%
-
----------------------------------------------------------------
-Select; Back = B
-Refreshing In 5 Seconds...
-
-...
-
-=========================( InfoEventMon )=========================
-
-NIC Name: Realtek PCIe GbE Family Controller
-Status: Up
-Speed: 1 Gbps
-IPv4 Address: XXX.XXX.XXX.XXX
-Download Rate: 15.4 KB/s
-Upload Rate: 13.5 KB/s
-Discards Total: 0
-Errors Total: 0
 
 ---------------------------------------------------------------
 Select; Back = B
