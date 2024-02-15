@@ -1,7 +1,7 @@
 # display.ps1
 
 function PrintProgramTitle {
-    Write-Host "`n==========================( InfoEventMon )=========================`n"
+    Write-Host "`n=========================( InfoEventMon )==========================`n"
 }
 
 function PrintProgramSeparator {
