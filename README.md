@@ -6,6 +6,10 @@ Alpha, Consolidating, Performancer and WhaGoWan and maybe some other half-develo
 - Issue with finding text in report, this will require test scripts, to see what is going on when retrieving applicable lines.
 - However it ends up working, I will need to implement this into the functions. 
 - remember to try include some limited drive info in system, see how much space is left.
+2. When it produce the "SystemEvents.Log", or the other one, it should then prompt "Select; Open = O, Back = B: "...
+- if open then open the file with notepad.
+- the other text on the page near the bottom needs a little work also.
+- consider using the ".\cache" folder.
 
 ## Description
 InfoEventMon Will become a tool for, System Information, Device Monitoring, System Events, in one place, it will all be done through cmdlets, so, dont expect much.
@@ -80,6 +84,22 @@ Select; Back = B
 Refreshing In 5 Seconds...
 
 ```
+- Production of System Events reports...
+```
+
+=========================( InfoEventMon )==========================
+
+Requesting System Events..
+..System Events Received.
+
+Exporting Report to SystemEvents.Log..
+..SystemEvents.Log Report Exported.
+
+Check Event Report File; Returning To Menu...
+
+
+```
+
 
 ## Usage
 1. Unpack the program to a sensible location, sensible locations do not include, "C:\Program Files" or "C:\Program Files(x86)", though it may work in those locations.
