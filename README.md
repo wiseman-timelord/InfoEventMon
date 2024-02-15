@@ -2,7 +2,7 @@
 
 ### Status
 Alpha, Consolidating, Performancer and WhaGoWan and maybe some other half-developed ones, into a single program "InfoEventMon", for system monitoring, device info and recent events...
-1. Progress submenu options for "Device Information" to completion; Options on Submenu have been refined to, System, Graphics, Sound. 
+1. Progress submenu options for "Device Information" to completion; Options on Submenu have been refined to, System, Graphics, Sound... 
 - Issue with finding text in report, this will require test scripts, to see what is going on when retrieving applicable lines.
 - However it ends up working, I will need to implement this into the functions. 
 - remember to try include some limited drive info in system, see how much space is left.
