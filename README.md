@@ -36,7 +36,7 @@ The Main Menu...
 
                      1. Performance Monitor,
 
-                     2. Device Information,
+                     2. DirectX Information,
 
                      3. Recent Events Report.
 
