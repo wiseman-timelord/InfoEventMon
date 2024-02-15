@@ -47,7 +47,7 @@ The Main Menu...
 Select, Options = 1-3, Exit = X: :
 
 ```
-- Example Monitoring Option...
+- Monitoring Options (both screens)...
 ```
 
 =========================( InfoEventMon )=========================
@@ -58,7 +58,23 @@ Current Clock Speed: 3793MHz
 CPU Usage: 9.1%
 
 ---------------------------------------------------------------
-Press 'B' to break from the loop...
+Select; Back = B
+
+=========================( InfoEventMon )=========================
+
+Name: Ethernet
+Interface: Realtek PCIe GbE Family Controller
+Status: Up
+Speed: 1 Gbps
+IPv4 Address: 192.168.1.2
+Download Rate: 15.4 KB/s
+Upload Rate: 13.5 KB/s
+Discards Total: 0
+Errors Total: 0
+
+---------------------------------------------------------------
+Select; Back = B
+
 
 ```
 
