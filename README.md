@@ -61,6 +61,8 @@ CPU Usage: 9.1%
 Select; Back = B
 Refreshing In 5 Seconds...
 
+...
+
 =========================( InfoEventMon )=========================
 
 Name: Ethernet
