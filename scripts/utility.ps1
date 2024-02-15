@@ -2,20 +2,20 @@
 
 function Invoke-CPUMonitoring {
     while ($true) {
-        # Retrieve stats first
-        $cpuStats = Get-CpuStatistics
+        $cpuStats = Get-CpuStatistics 
 
-        # Now clear the screen and display the retrieved stats
         Clear-Host
         PrintProgramTitle
         
         Write-Host "CPU Name: $($cpuStats.Name)"
+        Write-Host "Total Threads: $($cpuStats.Threads)"  # Display the number of threads
         Write-Host "Max Clock Speed: $($cpuStats.MaxSpeed)MHz"
         Write-Host "Current Clock Speed: $($cpuStats.CurrentSpeed)MHz"
         Write-Host "CPU Usage: $($cpuStats.Usage)%"
         Write-Host ""
         PrintProgramSeparator
-        Write-Host "Press 'B' to break from the loop..."
+        Write-Host "Select; Back = B"
+		Write-Host "Refreshing In 5 Seconds..."
 
         if ([console]::KeyAvailable) {
             $key = [console]::ReadKey($true)
@@ -29,8 +29,6 @@ function Invoke-CPUMonitoring {
     Show-PerformanceMonitorMenu
 }
 
-
-
 function Get-CpuStatistics {
     $cpuInfo = Get-CimInstance -ClassName Win32_Processor
     $cpuUsage = (Get-Counter -Counter "\Processor(_Total)\% Processor Time").CounterSamples.CookedValue
@@ -41,17 +39,20 @@ function Get-CpuStatistics {
         MaxSpeed = $cpuInfo.MaxClockSpeed
         CurrentSpeed = $cpuInfo.CurrentClockSpeed
         Usage = $cpuUsageRounded
+        Threads = $cpuInfo.ThreadCount
     }
 }
 
+
 function Invoke-NETMonitoring {
     while ($true) {
+        # Fetch stats before clearing the screen
+        $networkStats = Get-NetworkStatistics
+        $netAdapters = Get-NetAdapter | Where-Object Status -eq 'Up'
+
         Clear-Host
         PrintProgramTitle
 
-        $networkStats = Get-NetworkStatistics
-        $netAdapters = Get-NetAdapter | Where-Object Status -eq 'Up'
-        
         foreach ($adapter in $netAdapters) {
             Write-Host "Name: $($adapter.Name)"
             Write-Host "Interface: $($adapter.InterfaceDescription)"
@@ -60,7 +61,9 @@ function Invoke-NETMonitoring {
             Write-Host "IPv4 Address: $(($adapter | Get-NetIPAddress -AddressFamily IPv4).IPAddress)"
             Write-Host "Download Rate: $($networkStats.InRate) KB/s"
             Write-Host "Upload Rate: $($networkStats.OutRate) KB/s"
-			Write-Host ""
+            Write-Host "Discards Total: $($networkStats.Discards)"
+            Write-Host "Errors Total: $($networkStats.Errors)"
+            Write-Host ""
         }
 
         if (-not $netAdapters) {
@@ -68,9 +71,11 @@ function Invoke-NETMonitoring {
         }
 
         PrintProgramSeparator
-        Write-Host "Press 'B' to break from the loop..."
+        Write-Host "Select; Back = B"
+		Write-Host "Refreshing In 5 Seconds..."
 
         if ([console]::KeyAvailable -and ([console]::ReadKey().Key -eq "B")) {
+            [console]::ReadKey($true)  # Consume the key press to prevent repeated breaks
             break
         }
 
@@ -79,29 +84,33 @@ function Invoke-NETMonitoring {
     Show-PerformanceMonitorMenu
 }
 
-
-
 function Get-NetworkStatistics {
     $networkInterface = Get-NetAdapterStatistics | Select-Object -First 1
     if ($networkInterface -eq $null) {
-        return $null
+        return @{
+            InRate = 0
+            OutRate = 0
+            Discards = 0
+            Errors = 0
+        }
     }
 
     $currentInbound = $networkInterface.ReceivedBytes
     $currentOutbound = $networkInterface.SentBytes
-    # Ensure the time interval and conversion factors are correctly applied.
     $inRate = (($currentInbound - $Global:LastInboundBytes_f8m) * 8 / 1024) / 5
     $outRate = (($currentOutbound - $Global:LastOutboundBytes_u4x) * 8 / 1024) / 5
     $Global:LastInboundBytes_f8m = $currentInbound
     $Global:LastOutboundBytes_u4x = $currentOutbound
+    $discardsTotal = if ($networkInterface.PacketsReceivedDiscarded) {$networkInterface.PacketsReceivedDiscarded} else {0}
+    $errorsTotal = if ($networkInterface.PacketsReceivedErrors) {$networkInterface.PacketsReceivedErrors} else {0}
 
     return @{
         InRate = [math]::Round($inRate, 1)
         OutRate = [math]::Round($outRate, 1)
+        Discards = $discardsTotal
+        Errors = $errorsTotal
     }
 }
-
-
 
 function Get-EventsReport {
     param (
