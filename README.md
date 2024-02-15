@@ -83,26 +83,16 @@ Refreshing In 5 Seconds...
 ```
 - Production of Apps/System Events report...
 ```
-Time: 02/15/2024 22:08:27, ID: 16384, Level: Information, Message: Successfully scheduled Software Protection service for re-start at 2024-03-16T06:53:27Z. Reason: RulesEngine.
-Time: 02/15/2024 22:07:57, ID: 16394, Level: Information, Message: Offline downlevel migration succeeded.
-Time: 02/15/2024 21:12:54, ID: 16384, Level: Information, Message: Successfully scheduled Software Protection service for re-start at 2024-03-16T06:53:54Z. Reason: RulesEngine.
-Time: 02/15/2024 21:12:24, ID: 16394, Level: Information, Message: Offline downlevel migration succeeded.
-Time: 02/15/2024 21:12:13, ID: 16384, Level: Information, Message: Successfully scheduled Software Protection service for re-start at 2024-03-16T06:53:13Z. Reason: RulesEngine.
-Time: 02/15/2024 21:11:43, ID: 1040, Level: Information, Message: Hardware has changed from previous boot.
-Time: 02/15/2024 21:11:43, ID: 16394, Level: Information, Message: Offline downlevel migration succeeded.
-Time: 02/15/2024 18:42:16, ID: 16384, Level: Information, Message: Successfully scheduled Software Protection service for re-start at 2024-03-16T06:53:16Z. Reason: RulesEngine.
-Time: 02/15/2024 18:41:45, ID: 16394, Level: Information, Message: Offline downlevel migration succeeded.
-Time: 02/15/2024 18:08:59, ID: 16384, Level: Information, Message: Successfully scheduled Software Protection service for re-start at 2024-03-16T06:53:59Z. Reason: RulesEngine.
-Time: 02/15/2024 18:08:29, ID: 16394, Level: Information, Message: Offline downlevel migration succeeded.
-Time: 02/15/2024 18:08:19, ID: 16384, Level: Information, Message: Successfully scheduled Software Protection service for re-start at 2024-03-16T06:53:19Z. Reason: RulesEngine.
-Time: 02/15/2024 18:07:48, ID: 16394, Level: Information, Message: Offline downlevel migration succeeded.
-Time: 02/15/2024 17:33:09, ID: 16384, Level: Information, Message: Successfully scheduled Software Protection service for re-start at 2024-03-16T06:53:09Z. Reason: RulesEngine.
-Time: 02/15/2024 17:32:39, ID: 16394, Level: Information, Message: Offline downlevel migration succeeded.
-Time: 02/15/2024 16:33:45, ID: 16384, Level: Information, Message: Successfully scheduled Software Protection service for re-start at 2024-03-16T06:53:45Z. Reason: RulesEngine.
-Time: 02/15/2024 16:33:15, ID: 16394, Level: Information, Message: Offline downlevel migration succeeded.
-Time: 02/15/2024 15:59:19, ID: 16384, Level: Information, Message: Successfully scheduled Software Protection service for re-start at 2024-03-16T06:53:19Z. Reason: RulesEngine.
-Time: 02/15/2024 15:58:49, ID: 16394, Level: Information, Message: Offline downlevel migration succeeded.
-Time: 02/15/2024 15:58:00, ID: 0, Level: Information, Message: Service stopped.
+=========================( InfoEventMon )==========================
+
+Requesting System Events..
+..System Events Received.
+
+Exporting Report to SystemEvents.Log..
+..SystemEvents.Log Report Exported.
+
+-------------------------------------------------------------------
+Select; Open = O, Back = B:
 
 ```
 
