@@ -1,11 +1,11 @@
 # display.ps1
 
 function PrintProgramTitle {
-    Write-Host "`n=========================( InfoEventMon )=========================`n"
+    Write-Host "`n==========================( InfoEventMon )=========================`n"
 }
 
 function PrintProgramSeparator {
-    Write-Host "---------------------------------------------------------------"
+    Write-Host "-------------------------------------------------------------------"
 }
 
 # Sets the window title and size, adjusting the console properties

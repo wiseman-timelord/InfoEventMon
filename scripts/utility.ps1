@@ -54,8 +54,7 @@ function Invoke-NETMonitoring {
         PrintProgramTitle
 
         foreach ($adapter in $netAdapters) {
-            Write-Host "Name: $($adapter.Name)"
-            Write-Host "Interface: $($adapter.InterfaceDescription)"
+            Write-Host "NIC Name: $($adapter.InterfaceDescription)"
             Write-Host "Status: Up"
             Write-Host "Speed: $($adapter.LinkSpeed)"
             Write-Host "IPv4 Address: $(($adapter | Get-NetIPAddress -AddressFamily IPv4).IPAddress)"
@@ -75,7 +74,7 @@ function Invoke-NETMonitoring {
 		Write-Host "Refreshing In 5 Seconds..."
 
         if ([console]::KeyAvailable -and ([console]::ReadKey().Key -eq "B")) {
-            [console]::ReadKey($true)  # Consume the key press to prevent repeated breaks
+            [console]::ReadKey($true)
             break
         }
 
