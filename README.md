@@ -2,7 +2,7 @@
 
 ### Status
 Alpha, Consolidating, Performancer and WhaGoWan, into a single program "PerfEvent", for system monitoring and recent events...
-2. Progress submenu options for "Device Information" to completion; this may have to result in usage of DirectX.
+1. Progress submenu options for "Device Information" to completion; this may have to result in usage of DirectX.
 - introduce new main menu item "Drirect X Stats~", to extend the info past the limits of cmdlets.
 
 ## Description
