@@ -111,6 +111,157 @@ function Get-NetworkStatistics {
     }
 }
 
+function Show-SystemInformation {
+    Clear-Host
+    PrintProgramTitle
+    Ensure-AndDisplayReportStatus -ReportPath $Global:reportPath_s9v
+    $content = Get-Content -Path $Global:reportPath_s9v
+    $start = $content | Select-String -Pattern "^------------------$" -Context 0,1 | Where-Object { $_.Context.PostContext -match "System Information" } | Select-Object -First 1 | ForEach-Object { $_.LineNumber }
+    $end = $content | Select-String -Pattern "^------------------$" -Context 0 | Where-Object { $_.LineNumber -gt $start } | Select-Object -First 1 | ForEach-Object { $_.LineNumber }
+    $systemInfoKeys = @(
+        "Machine name:",
+        "Operating System:",
+        "Language:",
+        "System Model:",
+        "BIOS:",
+        "Processor:",
+        "Memory:",
+        "Windows Dir:",
+        "DirectX Version:"
+    )
+    foreach ($key in $systemInfoKeys) {
+        $line = $content[$start..$end] | Where-Object { $_ -match $key } | Select-Object -First 1
+        if ($line) {
+            Write-Host ($line.TrimStart())
+        }
+    }
+    Shorter-FunctionsPromptHelper
+}
+
+
+function Show-ProcessorInformation {
+    Clear-Host
+    PrintProgramTitle
+
+    # Utilize common logic for ensuring and displaying the report's status
+    Ensure-AndDisplayReportStatus -ReportPath $Global:reportPath_s9v
+
+    # Unique logic for displaying Processor Information from the report
+    # Placeholder for specific parsing and displaying processor information
+    Write-Host "Processor Information:"
+    # Example: Filter and display only relevant processor details from the report
+    Get-Content -Path $Global:reportPath_s9v | Where-Object { $_ -match "Processor" } | Out-Host
+    Shorter-FunctionsPromptHelper
+}
+
+function Show-GraphicsInformation {
+    Clear-Host
+    PrintProgramTitle
+
+    # Utilize common logic for ensuring and displaying the report's status
+    Ensure-AndDisplayReportStatus -ReportPath $Global:reportPath_s9v
+
+    # Unique logic for displaying Graphics Information from the report
+    # Placeholder for specific parsing and displaying graphics information
+    Write-Host "Graphics Information:"
+    # Example: Filter and display only relevant graphics details from the report
+    Get-Content -Path $Global:reportPath_s9v | Where-Object { $_ -match "Card name" -or $_ -match "Manufacturer" } | Out-Host
+    Shorter-FunctionsPromptHelper
+}
+
+function Show-AudioInformation {
+    Clear-Host
+    PrintProgramTitle
+
+    # Utilize common logic for ensuring and displaying the report's status
+    Ensure-AndDisplayReportStatus -ReportPath $Global:reportPath_s9v
+
+    # Unique logic for displaying Audio Information from the report
+    Write-Host "Audio Information:"
+    # Example: Filter and display only relevant audio details from the report
+    Get-Content -Path $Global:reportPath_s9v | Where-Object { $_ -match "Sound Devices" -or $_ -match "Description" } | Out-Host
+    Shorter-FunctionsPromptHelper
+}
+
+function Show-NetworkInformation {
+    Clear-Host
+    PrintProgramTitle
+
+    # Utilize common logic for ensuring and displaying the report's status
+    Ensure-AndDisplayReportStatus -ReportPath $Global:reportPath_s9v
+
+    # Unique logic for displaying Network Information from the report
+    Write-Host "Network Information:"
+    # Example: Filter and display only relevant network details from the report
+    Get-Content -Path $Global:reportPath_s9v | Where-Object { $_ -match "Network" -or $_ -match "Card" } | Out-Host
+    Shorter-FunctionsPromptHelper
+}
+
+
+function Shorter-FunctionsPromptHelper {
+	PrintProgramSeparator
+    Write-Host "Select; Back = B:" -NoNewline
+    do {
+        $key = [console]::ReadKey($true)
+    } while ($key.Key -ne "B")
+    Write-Host "`nReturning To Submenu..."
+    Start-Sleep -Seconds 1
+    Show-DeviceInfoMenu
+}
+
+
+function Ensure-AndDisplayReportStatus {
+    param (
+        [string]$ReportPath
+    )
+    Write-Host "Check Report Status.."
+    if (-not (Test-RecentReport -ReportPath $ReportPath)) {
+        Write-Host "..Retrieving New Report.."
+        Invoke-GenerateReport -ReportPath $ReportPath
+    } else {
+        Write-Host "..Using Existing Report.`n"
+    }
+}
+
+function Test-RecentReport {
+    param (
+        [string]$ReportPath
+    )
+    if (Test-Path -Path $ReportPath) {
+        $fileCreationTime = (Get-Item $ReportPath).LastWriteTime
+        $currentTime = Get-Date
+        $timeDifference = $currentTime.Subtract($fileCreationTime)
+        return $timeDifference.TotalHours -le 1
+    }
+    return $false
+}
+
+function Invoke-GenerateReport {
+    param (
+        [string]$ReportPath
+    )
+    $cacheDir = Split-Path -Path $ReportPath -Parent
+    if (-not (Test-Path -Path $cacheDir)) {
+        New-Item -ItemType Directory -Path $cacheDir | Out-Null
+    }
+    Start-Process "dxdiag" -ArgumentList "/dontskip /t `"$ReportPath`"" -NoNewWindow -Wait
+    $timeoutSeconds = 60
+    $stopwatch = [System.Diagnostics.Stopwatch]::StartNew()
+    while (-not (Test-Path -Path $ReportPath) -and $stopwatch.Elapsed.TotalSeconds -lt $timeoutSeconds) {
+        Start-Sleep -Seconds 1
+    }
+    if (Test-Path -Path $ReportPath) {
+        Write-Host "..Report Created: $ReportPath`n"
+    } else {
+        Write-Host "..Report Creation Failed!`n"
+		Start-Sleep -Seconds 3
+		PrintProgramSeparator
+		Write-Host "`nReturning To Submenu..."
+        Start-Sleep -Seconds 1
+        Show-DeviceInfoMenu		
+    }
+}
+
 function Get-EventsReport {
     param (
         [ValidateSet("Application", "System")]
@@ -139,3 +290,15 @@ function Get-EventsReport {
     Start-Sleep -Seconds 2
     Show-RecentEventsMenu
 }
+
+function Ensure-CacheDirectory {
+    Write-Host "Checking For .\cache.."
+	if (-not (Test-Path -Path ".\cache")) {
+        Write-Host "..Not Found, Creating.."
+        New-Item -ItemType Directory -Path ".\cache" | Out-Null
+        Write-Host "...\cache Dir Created."
+    } else {
+        Write-Host ".\cache Dir Present."
+    }
+}
+

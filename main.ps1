@@ -7,13 +7,16 @@
 # Global Variables
 $Global:LastInboundBytes_f8m = 0
 $Global:LastOutboundBytes_u4x = 0
+$Global:reportPath_s9v = ".\cache\dxdiagReport.txt"
 
 # Initialize program
 function script-InitializationCode {
     PrintProgramTitle
 	Set-ConfigureDisplay
 	PrintProgramTitle
-    Write-Host "Powershell Script Initialized...`n"
+	Ensure-CacheDirectory
+    Start-Sleep -Seconds 1
+	Write-Host "`nPowershell Script Initialized...`n"
     Start-Sleep -Seconds 2
 }
 

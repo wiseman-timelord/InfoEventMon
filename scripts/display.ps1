@@ -68,16 +68,26 @@ function Show-DeviceInfoMenu {
     Clear-Host
     PrintProgramTitle
     Write-Host "`n`n`n`n`n`n`n`n"
-	Write-Host "                    1. Processor Information,`n"
-	Write-Host "                    2. Graphics Information,`n"
-	Write-Host "                    3. Audio Information,`n"
-    Write-Host "                    4. Network Information."
-	Write-Host "`n`n`n`n`n`n`n`n"
+    Write-Host "                    1. System Information,`n"
+	Write-Host "                    2. Processor Information,`n"
+    Write-Host "                    3. Graphics Information,`n"
+    Write-Host "                    4. Audio Information,`n"
+    Write-Host "                    5. Network Information."
+    Write-Host "`n`n`n`n`n`n`n`n"
     PrintProgramSeparator
-    $choice = Read-Host "Select; Options = 1-4, Back = B"
+    $choice = Read-Host "Select; Options = 1-5, Back = B"
 
     switch ($choice) {
-        "b" { Show-MainMenu }
+        "1" { Show-SystemInformation }
+		"2" { Show-ProcessorInformation }
+        "3" { Show-GraphicsInformation }
+        "4" { Show-AudioInformation }
+        "5" { Show-NetworkInformation }
+        "b" {
+            Write-Host "Returning To Main Menu..."
+            Start-Sleep -Seconds 1
+            Show-MainMenu
+        }
         default {
             Write-Host "Invalid choice. Please try again."
             Start-Sleep -Seconds 2
@@ -85,6 +95,8 @@ function Show-DeviceInfoMenu {
         }
     }
 }
+
+
 
 function Show-RecentEventsMenu {
     Clear-Host
