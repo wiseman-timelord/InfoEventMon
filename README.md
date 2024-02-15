@@ -66,8 +66,7 @@ Refreshing In 5 Seconds...
 
 =========================( InfoEventMon )=========================
 
-Name: Ethernet
-Interface: Realtek PCIe GbE Family Controller
+NIC Name: Realtek PCIe GbE Family Controller
 Status: Up
 Speed: 1 Gbps
 IPv4 Address: 192.168.1.2
