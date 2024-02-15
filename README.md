@@ -7,7 +7,7 @@ Alpha; Consolidating, Performancer and WhaGoWan and maybe some other half-develo
 - if report is over 30 minutes long, then generate new report.
 - it needs to detect up to 2 graphics cards and upto 3 sound devices (to fit in space). 
 - add a drive info option to submenu, limit info per dive and/or do horizontally.
-2. the prompts for monitoring require instant activation of keypresses, so, all functions must now have this for consistency.
+2. the prompts for monitoring require instant activation of keypresses, so, all prompts must now have this for consistency.
 
 ## Description
 InfoEventMon Will become a tool for, System Information, Device Monitoring, System Events, in one place, it will all be done through cmdlets, so, dont expect much.
