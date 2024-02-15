@@ -149,14 +149,8 @@ function Show-Information {
     param ([string]$Type)
     Clear-Host
     PrintProgramTitle
-    
-    # Start the report check/generation process
     CheckAndGenerateDirectXReport
-    
-    # Retrieve and populate information from the report
     RetrieveDataFromReportAndPopulateLists
-
-    # Display the information
     Write-Host "$Type Information:"
     if ($Global:infoKeys_5f4.ContainsKey($Type)) {
         foreach ($key in $Global:infoKeys_5f4[$Type]) {
@@ -167,8 +161,15 @@ function Show-Information {
     } else {
         Write-Host "Error Retrieving $Type Info!"
     }
-
-    Shorter-FunctionsPromptHelper
+	Write-Host ""
+	PrintProgramSeparator
+    Write-Host "Select; Back = B:" -NoNewline
+    do {
+        $key = [console]::ReadKey($true)
+    } while ($key.Key -ne "B")
+    Write-Host "`nReturning To Submenu..."
+    Start-Sleep -Seconds 1
+    Show-DeviceInfoMenu
 }
 
 function CheckAndGenerateDirectXReport {
@@ -176,7 +177,11 @@ function CheckAndGenerateDirectXReport {
     Write-Host "Checking For Report.."
     if (-not (Test-RecentReport -ReportPath $reportPath)) {
         Write-Host "..Retrieving New Report.."
-        Invoke-GenerateReport -ReportPath $reportPath
+        $cacheDir = Split-Path -Path $reportPath -Parent
+        if (-not (Test-Path -Path $cacheDir)) {
+            New-Item -ItemType Directory -Path $cacheDir | Out-Null
+        }
+        Start-Process "dxdiag" -ArgumentList "/dontskip /t `"$reportPath`"" -NoNewWindow -Wait
     } else {
         Write-Host "..Using Existing Report.`n"
     }
@@ -186,8 +191,14 @@ function RetrieveDataFromReportAndPopulateLists {
     $reportPath = $Global:reportPath_s9v
     $content = Get-Content -Path $reportPath -Raw
     $Global:FetchedInfo_9vb.Clear()
-    foreach ($type in $Global:infoKeys_5f4.Keys)
-        $pattern = GetPatternForType -Type $type
+    foreach ($type in $Global:infoKeys_5f4.Keys) {
+        # Integrated GetPatternForType logic directly
+        $pattern = switch ($type) {
+            "System" { "(?s)------------------\r?\nSystem Information\r?\n------------------(.*?)------------------" }
+            "Graphics" { "(?s)---------------\r?\nDisplay Devices\r?\n---------------(.*?)---------------" }
+            "Audio" { "(?s)-------------\r?\nSound Devices\r?\n-------------(.*?)-------------" }
+            default { $null }
+        }
         if ($content -match $pattern) {
             foreach ($key in $Global:infoKeys_5f4[$type]) {
                 if ($content -match "${key}: (.*?)`r?`n") {
@@ -197,4 +208,3 @@ function RetrieveDataFromReportAndPopulateLists {
         }
     }
 }
-
