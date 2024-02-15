@@ -53,6 +53,7 @@ Select, Options = 1-3, Exit = X: :
 =========================( InfoEventMon )=========================
 
 CPU Name: AMD Ryzen 9 3900X 12-Core Processor
+Total Threads: 24
 Max Clock Speed: 3801MHz
 Current Clock Speed: 3793MHz
 CPU Usage: 9.1%
