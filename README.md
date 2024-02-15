@@ -7,17 +7,13 @@ Alpha; Consolidating, Performancer and WhaGoWan and maybe some other half-develo
 - if report is over 30 minutes long, then generate new report.
 - it needs to detect up to 2 graphics cards and upto 3 sound devices (to fit in space). 
 - add a drive info option to submenu, limit info per dive or drives to number or do horizontally.
-2. When it produce the "SystemEvents.Log", or the other one, it should then prompt "Select; Open = O, Back = B: "...
-- if open then open the file with notepad.
-- the other text on the page near the bottom needs a little work also.
-- consider using the ".\cache" folder.
 
 ## Description
 InfoEventMon Will become a tool for, System Information, Device Monitoring, System Events, in one place, it will all be done through cmdlets, so, dont expect much.
 
 ### Features
 **CPU/Network Monitoring:** Monitor the performance of your, Processor or Network, see `Preview` section below.
-**Application/System Events:** Export recent events to a relevantly relating `ProgramEvents.Txt/SystemEvents.Txt`.  
+**Application/System Events:** Export recent events to a relevantly relating `ProgramEvents.Txt/SystemEvents.Txt`, with options to launch notepad and view it.  
 
 ### Preview
 The Main Menu...
@@ -85,19 +81,20 @@ Select; Back = B
 Refreshing In 5 Seconds...
 
 ```
-- Production of System Events reports...
+- Production of Apps/System Events report...
 ```
-
-=========================( InfoEventMon )==========================
-
-Requesting System Events..
-..System Events Received.
-
-Exporting Report to SystemEvents.Log..
-..SystemEvents.Log Report Exported.
-
-Check Event Report File; Returning To Menu...
-
+Time: 02/15/2024 22:08:27, ID: 16384, Level: Information, Message: Successfully scheduled Software Protection service for re-start at 2024-03-16T06:53:27Z. Reason: RulesEngine.
+Time: 02/15/2024 22:07:57, ID: 16394, Level: Information, Message: Offline downlevel migration succeeded.
+Time: 02/15/2024 21:12:54, ID: 16384, Level: Information, Message: Successfully scheduled Software Protection service for re-start at 2024-03-16T06:53:54Z. Reason: RulesEngine.
+Time: 02/15/2024 21:12:24, ID: 16394, Level: Information, Message: Offline downlevel migration succeeded.
+Time: 02/15/2024 21:12:13, ID: 16384, Level: Information, Message: Successfully scheduled Software Protection service for re-start at 2024-03-16T06:53:13Z. Reason: RulesEngine.
+Time: 02/15/2024 21:11:43, ID: 1040, Level: Information, Message: Hardware has changed from previous boot.
+Time: 02/15/2024 21:11:43, ID: 16394, Level: Information, Message: Offline downlevel migration succeeded.
+Time: 02/15/2024 18:42:16, ID: 16384, Level: Information, Message: Successfully scheduled Software Protection service for re-start at 2024-03-16T06:53:16Z. Reason: RulesEngine.
+Time: 02/15/2024 18:41:45, ID: 16394, Level: Information, Message: Offline downlevel migration succeeded.
+Time: 02/15/2024 18:08:59, ID: 16384, Level: Information, Message: Successfully scheduled Software Protection service for re-start at 2024-03-16T06:53:59Z. Reason: RulesEngine.
+Time: 02/15/2024 18:08:29, ID: 16394, Level: Information, Message: Offline downlevel migration succeeded.
+Time: 02/15/2024 18:08:19, ID: 16384, Level: Information, Message: Successfully scheduled Software Protection service for re-start at 2024-03-16T06:53:19Z. Reason: RulesEngine.
 
 ```
 
