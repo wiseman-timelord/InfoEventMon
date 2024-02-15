@@ -95,6 +95,14 @@ Time: 02/15/2024 18:41:45, ID: 16394, Level: Information, Message: Offline downl
 Time: 02/15/2024 18:08:59, ID: 16384, Level: Information, Message: Successfully scheduled Software Protection service for re-start at 2024-03-16T06:53:59Z. Reason: RulesEngine.
 Time: 02/15/2024 18:08:29, ID: 16394, Level: Information, Message: Offline downlevel migration succeeded.
 Time: 02/15/2024 18:08:19, ID: 16384, Level: Information, Message: Successfully scheduled Software Protection service for re-start at 2024-03-16T06:53:19Z. Reason: RulesEngine.
+Time: 02/15/2024 18:07:48, ID: 16394, Level: Information, Message: Offline downlevel migration succeeded.
+Time: 02/15/2024 17:33:09, ID: 16384, Level: Information, Message: Successfully scheduled Software Protection service for re-start at 2024-03-16T06:53:09Z. Reason: RulesEngine.
+Time: 02/15/2024 17:32:39, ID: 16394, Level: Information, Message: Offline downlevel migration succeeded.
+Time: 02/15/2024 16:33:45, ID: 16384, Level: Information, Message: Successfully scheduled Software Protection service for re-start at 2024-03-16T06:53:45Z. Reason: RulesEngine.
+Time: 02/15/2024 16:33:15, ID: 16394, Level: Information, Message: Offline downlevel migration succeeded.
+Time: 02/15/2024 15:59:19, ID: 16384, Level: Information, Message: Successfully scheduled Software Protection service for re-start at 2024-03-16T06:53:19Z. Reason: RulesEngine.
+Time: 02/15/2024 15:58:49, ID: 16394, Level: Information, Message: Offline downlevel migration succeeded.
+Time: 02/15/2024 15:58:00, ID: 0, Level: Information, Message: Service stopped.
 
 ```
 
