@@ -14,7 +14,7 @@ InfoEventMon Will become a tool for, System Information, Device Monitoring, Syst
 **Application/System Events Report:** Export recent events to a relevantly relating `ProgramEvents.Txt/SystemEvents.Txt`.  
 
 ### Preview
-The Main Menu (Alpha)...
+The Main Menu...
 ```
 =========================( PerfEventMon )=========================
 
@@ -45,6 +45,20 @@ The Main Menu (Alpha)...
 
 ---------------------------------------------------------------
 Select, Options = 1-3, Exit = X: :
+
+```
+- Example Monitoring Option...
+```
+
+=========================( InfoEventMon )=========================
+
+CPU Name: AMD Ryzen 9 3900X 12-Core Processor
+Max Clock Speed: 3801MHz
+Current Clock Speed: 3793MHz
+CPU Usage: 9.1%
+
+---------------------------------------------------------------
+Press 'B' to break from the loop...
 
 ```
 
