@@ -2,10 +2,11 @@
 
 ### Status
 Alpha; Consolidating, Performancer and WhaGoWan and maybe some other half-developed ones, into a single program "InfoEventMon", for system monitoring, device info and recent events...
-1. Progress submenu options for "Device Information" to completion; Options on Submenu have been refined to, System, Graphics, Sound (this entire step is now delaying the project into self-destruction)... 
-- Issue with finding text in report, this will require test scripts, to see what is going on when retrieving applicable lines.
-- However it ends up working, I will need to implement this into the functions. 
-- remember to try include some limited drive info in system, see how much space is left.
+1. Progress submenu options for "Device Information" to completion; Options on Submenu have been refined to, System, Graphics, Sound... 
+- Layout of text needs work.
+- if report is over 30 minutes long, then generate new report.
+- it needs to detect up to 2 graphics cards and upto 3 sound devices (to fit in space). 
+- add a drive info option to submenu, limit info per dive or drives to number or do horizontally.
 2. When it produce the "SystemEvents.Log", or the other one, it should then prompt "Select; Open = O, Back = B: "...
 - if open then open the file with notepad.
 - the other text on the page near the bottom needs a little work also.
