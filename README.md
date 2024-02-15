@@ -11,7 +11,8 @@ Alpha, Consolidating, Performancer and WhaGoWan, into a single program "PerfEven
 InfoEventMon Will become a tool for, System Information, Device Monitoring, System Events, in one place, it will all be done through cmdlets, so, dont expect much.
 
 ### Features
-**Application/System Events Report:** Export recent events to a relevantly relating `ProgramEvents.Txt/SystemEvents.Txt`.  
+**CPU/Network Monitoring:** Monitor the performance of your, Processor or Network, see `Preview` section below.
+**Application/System Events:** Export recent events to a relevantly relating `ProgramEvents.Txt/SystemEvents.Txt`.  
 
 ### Preview
 The Main Menu...
