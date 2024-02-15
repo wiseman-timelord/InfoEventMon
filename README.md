@@ -2,10 +2,8 @@
 
 ### Status
 Alpha, Consolidating, Performancer and WhaGoWan, into a single program "PerfEvent", for system monitoring and recent events...
-1. Progress submenu options for "Performance Monitor" to completion. This includes..
-- Test and fix "Processor Monitoring".
-- Test and fix "Network Monitoring".
 2. Progress submenu options for "Device Information" to completion; this may have to result in usage of DirectX.
+- introduce new main menu item "Drirect X Stats~", to extend the info past the limits of cmdlets.
 
 ## Description
 InfoEventMon Will become a tool for, System Information, Device Monitoring, System Events, in one place, it will all be done through cmdlets, so, dont expect much.
@@ -98,7 +96,7 @@ To be detailed.
 - This is a, consolidation and update and upgrade, of multiple of my other programs.
 
 ### Development
-- introduce new main menu item "Drirect X Stats~", to extend the stat/info past the limits of cmdlets.
+- TBA
 
 ## Disclaimer
 This software is subject to the terms in License.Txt, covering usage, distribution, and modifications. For full details on your rights and obligations, refer to License.Txt.
