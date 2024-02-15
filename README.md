@@ -49,7 +49,26 @@ The Main Menu (those are submenus)...
 Select, Options = 1-3, Exit = X: :
 
 ```
-- Monitoring Options (both screens)...
+- DirectX Information for System/Graphics/Audio...
+```
+=========================( InfoEventMon )==========================
+
+Checking For Report..
+Graphics Information:
+Manufacturer: To Be Filled By O.E.M.
+Card name: Radeon (TM) RX 470 Graphics
+Dedicated Memory: 8171 MB
+Feature Levels: 12_0,11_1,11_0,10_1,10_0,9_3,9_2,9_1
+Monitor Model: UMC SHARP
+Monitor Name: Generic PnP Monitor
+Native Mode: 1366 x 768(p) (59.964Hz)
+Current Mode: 2000 x 1126 (32 bit) (55Hz)
+
+-------------------------------------------------------------------
+Select; Back = B:
+
+```
+- Monitoring of Processor/Network...
 ```
 =========================( InfoEventMon )=========================
 
@@ -64,7 +83,7 @@ Select; Back = B
 Refreshing In 5 Seconds...
 
 ```
-- Production of Apps/System Events report...
+- Produce and open, Apps/System Events reports...
 ```
 =========================( InfoEventMon )==========================
 
