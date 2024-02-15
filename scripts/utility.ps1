@@ -120,26 +120,35 @@ function Get-EventsReport {
     PrintProgramTitle
     $eventTypeName = if ($EventType -eq "Application") { "Program" } else { "System" }
     Write-Host "Requesting $eventTypeName Events.."
-
     $logName = "$EventType"
     $events = Get-WinEvent -LogName $logName -MaxEvents 20 | Select-Object TimeCreated, Id, LevelDisplayName, Message
     Write-Host "..$eventTypeName Events Received.`n"
     Start-Sleep -Seconds 1
-
+    $cacheDir = ".\cache"
+    if (-not (Test-Path -Path $cacheDir)) {
+        New-Item -ItemType Directory -Path $cacheDir
+    }
     $fileName = if ($EventType -eq "Application") { "ProgramEvents.Log" } else { "SystemEvents.Log" }
+    $filePath = Join-Path -Path $cacheDir -ChildPath $fileName
     Write-Host "Exporting Report to $fileName.."
     $report = @()
     foreach ($event in $events) {
         $report += "Time: $($event.TimeCreated), ID: $($event.Id), Level: $($event.LevelDisplayName), Message: $($event.Message.split("`n")[0])"
     }
-    $report | Out-File -FilePath $fileName -Force
+    $report | Out-File -FilePath $filePath -Force
     Write-Host "..$fileName Report Exported.`n"
     Start-Sleep -Seconds 1
-    Write-Host "Check Event Report File; Returning To Menu...`n"
-    Start-Sleep -Seconds 2
+    # Prompt the user for next action
+	PrintProgramSeparator
+    $userChoice = Read-Host "Select; Open = O, Back = B"
+    switch ($userChoice.ToLower()) {
+        "o" { Write-Host "Opening Report; Returning To Menu..";Start-Sleep -Seconds 1; Start-Process notepad.exe -ArgumentList $filePath;Start-Sleep -Seconds 1 }
+        "b" { Write-Host "Returning To Menu..";Start-Sleep -Seconds 1}
+        default { Write-Host "Invalid choice. Returning To Menu.."; Start-Sleep -Seconds 2
+        }
+    }
     Show-RecentEventsMenu
 }
-
 
 
 
