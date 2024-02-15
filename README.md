@@ -86,11 +86,11 @@ Refreshing In 5 Seconds...
 4. Navigate `Back` to the main menu, then `Exit` the program, then `Exit` the Launcher.
 
 ### Requirements
-To be detailed.
-- Windows supporting Batch operations (compatibility ranges require calculation).
-- .Net 2.0+ - Breaking a loop is impossible otherwise, check out [SystemConfig](https://github.com/wiseman-timelord/SystemConfig) for offline install of .net 3.5 if your having issues.
-- DirectX - For Device Information (compatibility ranges require calculation).
-- PowerShell - Check out, [PWSH 7.4](https://github.com/PowerShell/PowerShell/releases/tag/v7.4.0) (and make sure its on PATH) or [PWSH 7.4 MSI](https://github.com/PowerShell/PowerShell/releases/download/v7.4.0/PowerShell-7.4.0-win-x64.msi), if your having issues. 
+(compatibility ranges require calculation)
+- Windows based environment with, Scripting Host and Batch/PowerShell Support, Enabled.
+- .Net 2.0+ - Breaking a loop is impossible without this, check out [SystemConfig](https://github.com/wiseman-timelord/SystemConfig) for offline install of .net 3.5 if your having issues. (this project is not currently complete)
+- DirectX - For detailed device information, of course you can use DxDiag, but my program refines the info.
+- PowerShell - If your having issues, then upgrade your PowerShell, or alternatively install, [PWSH 7.4 MSI](https://github.com/PowerShell/PowerShell/releases/download/v7.4.0/PowerShell-7.4.0-win-x64.msi) or [PWSH 7.4](https://github.com/PowerShell/PowerShell/releases/tag/v7.4.0) (and make sure its on PATH). (compatibility ranges require calculation) 
 
 ## Notation
 - This is a, consolidation and update and upgrade, of multiple of my other programs.
