@@ -139,21 +139,6 @@ function Show-SystemInformation {
 }
 
 
-function Show-ProcessorInformation {
-    Clear-Host
-    PrintProgramTitle
-
-    # Utilize common logic for ensuring and displaying the report's status
-    Ensure-AndDisplayReportStatus -ReportPath $Global:reportPath_s9v
-
-    # Unique logic for displaying Processor Information from the report
-    # Placeholder for specific parsing and displaying processor information
-    Write-Host "Processor Information:"
-    # Example: Filter and display only relevant processor details from the report
-    Get-Content -Path $Global:reportPath_s9v | Where-Object { $_ -match "Processor" } | Out-Host
-    Shorter-FunctionsPromptHelper
-}
-
 function Show-GraphicsInformation {
     Clear-Host
     PrintProgramTitle
@@ -180,20 +165,6 @@ function Show-AudioInformation {
     Write-Host "Audio Information:"
     # Example: Filter and display only relevant audio details from the report
     Get-Content -Path $Global:reportPath_s9v | Where-Object { $_ -match "Sound Devices" -or $_ -match "Description" } | Out-Host
-    Shorter-FunctionsPromptHelper
-}
-
-function Show-NetworkInformation {
-    Clear-Host
-    PrintProgramTitle
-
-    # Utilize common logic for ensuring and displaying the report's status
-    Ensure-AndDisplayReportStatus -ReportPath $Global:reportPath_s9v
-
-    # Unique logic for displaying Network Information from the report
-    Write-Host "Network Information:"
-    # Example: Filter and display only relevant network details from the report
-    Get-Content -Path $Global:reportPath_s9v | Where-Object { $_ -match "Network" -or $_ -match "Card" } | Out-Host
     Shorter-FunctionsPromptHelper
 }
 

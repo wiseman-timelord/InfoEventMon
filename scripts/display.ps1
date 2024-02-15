@@ -22,7 +22,7 @@ function Show-MainMenu {
 	PrintProgramTitle
     Write-Host "`n`n`n`n`n`n`n`n`n"
     Write-Host "                     1. Performance Monitor,`n"
-    Write-Host "                     2. Device Information,`n"
+    Write-Host "                     2. DirectX Information,`n"
     Write-Host "                     3. Recent Events Report."
     Write-Host "`n`n`n`n`n`n`n`n`n"
     PrintProgramSeparator
@@ -67,22 +67,18 @@ function Show-PerformanceMonitorMenu {
 function Show-DeviceInfoMenu {
     Clear-Host
     PrintProgramTitle
-    Write-Host "`n`n`n`n`n`n`n`n"
+    Write-Host "`n`n`n`n`n`n`n`n`n"
     Write-Host "                    1. System Information,`n"
-	Write-Host "                    2. Processor Information,`n"
-    Write-Host "                    3. Graphics Information,`n"
-    Write-Host "                    4. Audio Information,`n"
-    Write-Host "                    5. Network Information."
-    Write-Host "`n`n`n`n`n`n`n`n"
+    Write-Host "                    2. Graphics Information,`n"
+    Write-Host "                    3. Audio Information."
+    Write-Host "`n`n`n`n`n`n`n`n`n"
     PrintProgramSeparator
-    $choice = Read-Host "Select; Options = 1-5, Back = B"
+    $choice = Read-Host "Select; Options = 1-3, Back = B"
 
     switch ($choice) {
         "1" { Show-SystemInformation }
-		"2" { Show-ProcessorInformation }
-        "3" { Show-GraphicsInformation }
-        "4" { Show-AudioInformation }
-        "5" { Show-NetworkInformation }
+        "2" { Show-GraphicsInformation }
+        "3" { Show-AudioInformation }
         "b" {
             Write-Host "Returning To Main Menu..."
             Start-Sleep -Seconds 1
