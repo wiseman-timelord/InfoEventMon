@@ -51,6 +51,21 @@ The Main Menu (those are submenus)...
 Select, Options = 1-3, Exit = X: :
 
 ```
+- Monitoring of Processor/Network...
+```
+=========================( InfoEventMon )=========================
+
+CPU Name: AMD Ryzen 9 3900X 12-Core Processor
+Maximum Threads: 24
+Maximum Clock Speed: 3801MHz
+Current Clock Speed: 3793MHz
+CPU Usage: 9.6%
+
+---------------------------------------------------------------
+Select; Back = B
+Refreshing In 5 Seconds...
+
+```
 - DirectX Information for System/Graphics/Audio...
 ```
 =========================( InfoEventMon )==========================
@@ -68,21 +83,6 @@ Current Mode: 2000 x 1126 (32 bit) (55Hz)
 
 -------------------------------------------------------------------
 Select; Back = B:
-
-```
-- Monitoring of Processor/Network...
-```
-=========================( InfoEventMon )=========================
-
-CPU Name: AMD Ryzen 9 3900X 12-Core Processor
-Maximum Threads: 24
-Maximum Clock Speed: 3801MHz
-Current Clock Speed: 3793MHz
-CPU Usage: 9.6%
-
----------------------------------------------------------------
-Select; Back = B
-Refreshing In 5 Seconds...
 
 ```
 - Produce and open, Apps/System Events reports...
