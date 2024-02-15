@@ -16,13 +16,13 @@ if exist ".\Errors-Crash.Log" (
     echo ..Deleting Log..
     del ".\Errors-Crash.Log"
 )
-if exist ".\ProgramEvents.Txt" (
+if exist ".\ProgramEvents.Log" (
     echo ..Program Events Log..
-    del ".\ProgramEvents.Txt"
+    del ".\ProgramEvents.Log"
 )
-if exist ".\SystemEvents.Txt" (
+if exist ".\SystemEvents.Log" (
     echo ..System Events Log..
-    del ".\SystemEvents.Txt"
+    del ".\SystemEvents.Log"
 )
 echo ..Cleaning Done.
 echo.

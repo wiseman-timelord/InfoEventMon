@@ -26,7 +26,7 @@ function Show-MainMenu {
     Write-Host "                     3. Recent Events Report."
     Write-Host "`n`n`n`n`n`n`n`n`n"
     PrintProgramSeparator
-    $choice = Read-Host "Select, Options = 1-3, Exit = X"
+    $choice = Read-Host "Select; Options = 1-3, Exit = X"
 
     switch ($choice) {
         "1" { Show-PerformanceMonitorMenu }
@@ -46,15 +46,15 @@ function Show-PerformanceMonitorMenu {
     Clear-Host
     PrintProgramTitle
 	Write-Host "`n`n`n`n`n`n`n`n`n`n"
-    Write-Host "                    1. Processor Statistics,`n"
-    Write-Host "                    2. Network Statistics."
+    Write-Host "                    1. Processor Monitoring,`n"
+    Write-Host "                    2. Network Monitoring."
 	Write-Host "`n`n`n`n`n`n`n`n`n`n"
     PrintProgramSeparator
-    $choice = Read-Host "Select, Options = 1-2, Back = B"
+    $choice = Read-Host "Select; Options = 1-2, Back = B"
 
     switch ($choice) {
-        "1" { Invoke-CPUStats }
-        "2" { Invoke-NETStats }
+        "1" { Invoke-CPUMonitoring }
+        "2" { Invoke-NETMonitoring }
         "b" { Show-MainMenu }
         default {
             Write-Host "Invalid choice. Please try again."
@@ -74,7 +74,7 @@ function Show-DeviceInfoMenu {
     Write-Host "                    4. Network Information."
 	Write-Host "`n`n`n`n`n`n`n`n"
     PrintProgramSeparator
-    $choice = Read-Host "Select, Options = 1-4, Back = B"
+    $choice = Read-Host "Select; Options = 1-4, Back = B"
 
     switch ($choice) {
         "b" { Show-MainMenu }
@@ -94,7 +94,7 @@ function Show-RecentEventsMenu {
     Write-Host "                     2. Recent System Events."
     Write-Host "`n`n`n`n`n`n`n`n`n`n"
     PrintProgramSeparator
-    $choice = Read-Host "Select, Options = 1-2, Back = B"
+    $choice = Read-Host "Select; Options = 1-2, Back = B"
 
     switch ($choice) {
         "1" { Get-EventsReport -EventType "Application" }

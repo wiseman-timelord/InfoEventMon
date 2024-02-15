@@ -4,6 +4,10 @@
 . .\scripts\display.ps1
 . .\scripts\utility.ps1
 
+# Global Variables
+$Global:LastInboundBytes_f8m = 0
+$Global:LastOutboundBytes_u4x = 0
+
 # Initialize program
 function script-InitializationCode {
     PrintProgramTitle

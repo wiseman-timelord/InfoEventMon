@@ -1,25 +1,106 @@
 # utility.ps1
 
-function Invoke-CPUStats {
-    # CPU statistics functionality remains as previously described
-    Clear-Host
-    Write-Host "Processor Statistics:"
-    $cpuLoad = Get-WmiObject Win32_Processor | Measure-Object -Property LoadPercentage -Average | Select-Object -ExpandProperty Average
-    Write-Host "Total CPU Load: $cpuLoad%"
-    Start-Sleep -Seconds 3
+function Invoke-CPUMonitoring {
+    while ($true) {
+        # Retrieve stats first
+        $cpuStats = Get-CpuStatistics
+
+        # Now clear the screen and display the retrieved stats
+        Clear-Host
+        PrintProgramTitle
+        
+        Write-Host "CPU Name: $($cpuStats.Name)"
+        Write-Host "Max Clock Speed: $($cpuStats.MaxSpeed)MHz"
+        Write-Host "Current Clock Speed: $($cpuStats.CurrentSpeed)MHz"
+        Write-Host "CPU Usage: $($cpuStats.Usage)%"
+        Write-Host ""
+        PrintProgramSeparator
+        Write-Host "Press 'B' to break from the loop..."
+
+        if ([console]::KeyAvailable) {
+            $key = [console]::ReadKey($true)
+            if ($key.Key -eq "B") {
+                break
+            }
+        }
+
+        Start-Sleep -Seconds 5
+    }
+    Show-PerformanceMonitorMenu
 }
 
-function Invoke-NETStats {
-    # Network statistics functionality remains as previously described
-    Clear-Host
-    Write-Host "Network Statistics:"
-    $interfaces = Get-NetAdapter | Where-Object { $_.Status -eq "Up" }
-    foreach ($interface in $interfaces) {
-        Write-Host "Interface $($interface.Name):"
-        Write-Host "    Speed: $($interface.LinkSpeed)"
+
+
+function Get-CpuStatistics {
+    $cpuInfo = Get-CimInstance -ClassName Win32_Processor
+    $cpuUsage = (Get-Counter -Counter "\Processor(_Total)\% Processor Time").CounterSamples.CookedValue
+    $cpuUsageRounded = [math]::Round($cpuUsage, 1)
+
+    return @{
+        Name = $cpuInfo.Name
+        MaxSpeed = $cpuInfo.MaxClockSpeed
+        CurrentSpeed = $cpuInfo.CurrentClockSpeed
+        Usage = $cpuUsageRounded
     }
-    Start-Sleep -Seconds 3
 }
+
+function Invoke-NETMonitoring {
+    while ($true) {
+        Clear-Host
+        PrintProgramTitle
+
+        $networkStats = Get-NetworkStatistics
+        $netAdapters = Get-NetAdapter | Where-Object Status -eq 'Up'
+        
+        foreach ($adapter in $netAdapters) {
+            Write-Host "Name: $($adapter.Name)"
+            Write-Host "Interface: $($adapter.InterfaceDescription)"
+            Write-Host "Status: Up"
+            Write-Host "Speed: $($adapter.LinkSpeed)"
+            Write-Host "IPv4 Address: $(($adapter | Get-NetIPAddress -AddressFamily IPv4).IPAddress)"
+            Write-Host "Download Rate: $($networkStats.InRate) KB/s"
+            Write-Host "Upload Rate: $($networkStats.OutRate) KB/s"
+			Write-Host ""
+        }
+
+        if (-not $netAdapters) {
+            Write-Host "No active network adapters found."
+        }
+
+        PrintProgramSeparator
+        Write-Host "Press 'B' to break from the loop..."
+
+        if ([console]::KeyAvailable -and ([console]::ReadKey().Key -eq "B")) {
+            break
+        }
+
+        Start-Sleep -Seconds 5
+    }
+    Show-PerformanceMonitorMenu
+}
+
+
+
+function Get-NetworkStatistics {
+    $networkInterface = Get-NetAdapterStatistics | Select-Object -First 1
+    if ($networkInterface -eq $null) {
+        return $null
+    }
+
+    $currentInbound = $networkInterface.ReceivedBytes
+    $currentOutbound = $networkInterface.SentBytes
+    # Ensure the time interval and conversion factors are correctly applied.
+    $inRate = (($currentInbound - $Global:LastInboundBytes_f8m) * 8 / 1024) / 5
+    $outRate = (($currentOutbound - $Global:LastOutboundBytes_u4x) * 8 / 1024) / 5
+    $Global:LastInboundBytes_f8m = $currentInbound
+    $Global:LastOutboundBytes_u4x = $currentOutbound
+
+    return @{
+        InRate = [math]::Round($inRate, 1)
+        OutRate = [math]::Round($outRate, 1)
+    }
+}
+
 
 
 function Get-EventsReport {
