@@ -81,7 +81,6 @@ if "%choice%"=="2" goto checkScript
 if "%choice%"=="x" goto end
 echo Invalid choice. Try again.
 timeout /t 2 /nobreak >nul
-pause
 goto menu
 
 :: Check for presence of powershell core and execute main.py
@@ -94,16 +93,13 @@ where pwsh >nul 2>&1
 if %ERRORLEVEL% equ 0 (
     timeout /t 1 /nobreak >nul
     pwsh.exe -NoProfile -ExecutionPolicy Bypass -File ".\main.ps1" 2>>".\Errors-Crash.Log"
-    echo.
-	echo ..Psc Process Exited.
-    echo.
+	echo ...Psc Process Exited.
 ) else (
     timeout /t 1 /nobreak >nul
     powershell.exe -NoProfile -ExecutionPolicy Bypass -File ".\main.ps1" 2>>".\Errors-Crash.Log"
-    echo.
-	echo ..Ps Process Exited.
-    echo.
+	echo ...Ps Process Exited.
 )
+echo.
 
 :: Post Powershell Processes
 color 80

@@ -76,9 +76,9 @@ function Show-DeviceInfoMenu {
     $choice = Read-Host "Select; Options = 1-3, Back = B"
 
     switch ($choice) {
-        "1" { Show-SystemInformation }
-        "2" { Show-GraphicsInformation }
-        "3" { Show-AudioInformation }
+        "1" { Show-Information -Type "System" }
+        "2" { Show-Information -Type "Graphics" }
+        "3" { Show-Information -Type "Audio" }
         "b" {
             Write-Host "Returning To Main Menu..."
             Start-Sleep -Seconds 1

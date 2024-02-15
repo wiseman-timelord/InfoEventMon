@@ -146,78 +146,40 @@ function Get-EventsReport {
 
 
 
-function Show-SystemInformation {
-    Clear-Host
-    PrintProgramTitle
-    Ensure-AndDisplayReportStatus -ReportPath $Global:reportPath_s9v
 
-    Write-Host "System Information:"
-    $systemInfoKeys = @(
-        "Machine name:",
-        "Operating System:",
-        "Language:",
-        "System Model:",
-        "BIOS:",
-        "Processor:",
-        "Memory:",
-        "Windows Dir:",
-        "DirectX Version:"
+function Show-Information {
+    param (
+        [string]$Type
     )
-    foreach ($key in $systemInfoKeys) {
-        if ($Global:FetchedInfo1_9vb[$key]) {
-            Write-Host ($Global:FetchedInfo1_9vb[$key].TrimStart())
-        }
-    }
-    Shorter-FunctionsPromptHelper
-}
-
-function Show-GraphicsInformation {
     Clear-Host
     PrintProgramTitle
     Ensure-AndDisplayReportStatus -ReportPath $Global:reportPath_s9v
 
-    Write-Host "Graphics Information:"
-    for ($i = 1; $i -le 2; $i++) {
-        $deviceInfo = if ($i -eq 1) { $Global:FetchedInfo1_9vb } else { $Global:FetchedInfo2_gv3 }
-        if ($deviceInfo -and $deviceInfo["Graphics Card $i"]) {
-            Write-Host "Graphics Card $i Details:"
-            $deviceInfo["Graphics Card $i"].GetEnumerator() | ForEach-Object {
-                Write-Host "$($_.Key): $($_.Value)"
-            }
-            Write-Host ""
-        }
-        if ($deviceInfo -and $deviceInfo["Monitor $i"]) {
-            Write-Host "Monitor $i Details:"
-            $deviceInfo["Monitor $i"].GetEnumerator() | ForEach-Object {
-                Write-Host "$($_.Key): $($_.Value)"
-            }
-            Write-Host ""
+    # Define keys based on type using global variables
+    $keys = switch ($Type) {
+        "System" { $Global:systemKeys_c5s }
+        "Graphics" { $Global:graphicsKeys_37v }
+        "Audio" { $Global:audioKeys_5f4 }
+        default { @() }
+    }
+
+    Write-Host "$Type Information:"
+    foreach ($key in $keys) {
+        if ($Global:FetchedInfo_9vb.ContainsKey($key)) {
+            Write-Host "${key}: $($Global:FetchedInfo_9vb[$key])"
         }
     }
-    Shorter-FunctionsPromptHelper
-}
 
-function Show-AudioInformation {
-    Clear-Host
-    PrintProgramTitle
-    Ensure-AndDisplayReportStatus -ReportPath $Global:reportPath_s9v
-
-    Write-Host "Audio Information:"
-    for ($i = 1; $i -le 2; $i++) {
-        $deviceInfo = if ($i -eq 1) { $Global:FetchedInfo1_9vb } else { $Global:FetchedInfo2_gv3 }
-        if ($deviceInfo -and $deviceInfo["Audio Device $i"]) {
-            Write-Host "Audio Device $i Details:"
-            $deviceInfo["Audio Device $i"].GetEnumerator() | ForEach-Object {
-                Write-Host "$($_.Key): $($_.Value)"
-            }
-            Write-Host ""
-        }
+    if (-not $keys.Count) {
+        Write-Host "Error Retrieving $Type Info!"
     }
+
     Shorter-FunctionsPromptHelper
 }
 
 
 function Shorter-FunctionsPromptHelper {
+	Write-Host ""
 	PrintProgramSeparator
     Write-Host "Select; Back = B:" -NoNewline
     do {
@@ -245,47 +207,33 @@ function Ensure-AndDisplayReportStatus {
 
 function PopulateGlobalFetchedInfo {
     param ([string]$ReportPath)
-    $content = Get-Content -Path $ReportPath
+    $content = Get-Content -Path $ReportPath -Raw
+
+    # Define the keys for each section
+    $systemKeys_c5s = @("Machine name", "Operating System", "Language", "System Model", "BIOS", "Processor", "Memory", "Windows Dir", "DirectX Version")
+    $graphicsKeys_37v = @("Manufacturer", "Card name", "Dedicated Memory", "Feature Levels", "Monitor Model", "Monitor Name", "Native Mode", "Current Mode")
+    $audioKeys_5f4 = @("Driver Provider", "Description", "Min/Max Sample Rate")
 
     # Clear existing data
-    $Global:FetchedInfo1_9vb.Clear()
-    $Global:FetchedInfo2_gv3.Clear()
+    $Global:FetchedInfo_9vb.Clear()
 
-    # Function to extract and assign device information
-    function ExtractDeviceInfo {
-        param ([string]$Content, [int]$DeviceIndex, [hashtable]$DeviceInfo)
-
-        $lines = $Content -split "`r`n"
-        $isDeviceSection = $false
-        $deviceCount = 0
-
-        foreach ($line in $lines) {
-            if ($line -match "---------------") {
-                if ($isDeviceSection -and $deviceCount -eq $DeviceIndex) { break }
-                $isDeviceSection = $false
-            }
-            if ($line -match "Card name:|Device Key:|Manufacturer:|Chip type:|DAC type:|Display Memory:|Dedicated Memory:|Shared Memory:|Current Mode:|HDR Support:|Driver Provider:|Driver Version:|Driver Date:|Audio Device:|Min/Max Sample Rate:") {
-                if (-not $isDeviceSection) {
-                    $isDeviceSection = $true
-                    $deviceCount++
-                    if ($deviceCount -gt $DeviceIndex) { continue }
-                }
-                if ($deviceCount -eq $DeviceIndex) {
-                    $keyValue = $line -split ":", 2
-                    $DeviceInfo[$keyValue[0].Trim()] = $keyValue[1].Trim()
+    # Helper function to parse and store data based on keys
+    function ExtractAndStoreData($pattern, $keys) {
+        if ($content -match $pattern) {
+            foreach ($key in $keys) {
+                if ($matches[0] -match "${key}: (.*)") {
+                    $Global:FetchedInfo_9vb[$key] = $matches[1]
                 }
             }
         }
     }
 
-    # Extract information for the first and second devices in both Display and Sound Devices sections
-    $displayContent = $content | Select-String "Display Devices" -Context 0,1000
-    ExtractDeviceInfo -Content $displayContent.Context.PostContext -DeviceIndex 1 -DeviceInfo $Global:FetchedInfo1_9vb
-    ExtractDeviceInfo -Content $displayContent.Context.PostContext -DeviceIndex 2 -DeviceInfo $Global:FetchedInfo2_gv3
-
-    $soundContent = $content | Select-String "Sound Devices" -Context 0,1000
-    ExtractDeviceInfo -Content $soundContent.Context.PostContext -DeviceIndex 1 -DeviceInfo $Global:FetchedInfo1_9vb
-    ExtractDeviceInfo -Content $soundContent.Context.PostContext -DeviceIndex 2 -DeviceInfo $Global:FetchedInfo2_gv3
+    # Extract and store system information
+    ExtractAndStoreData 'System Information[\s\S]*?------------------', $systemKeys_c5s
+    # Extract and store graphics information
+    ExtractAndStoreData 'Display Devices[\s\S]*?------------------', $graphicsKeys_37v
+    # Extract and store audio information
+    ExtractAndStoreData 'Sound Devices[\s\S]*?------------------', $audioKeys_5f4
 }
 
 
@@ -302,7 +250,6 @@ function Test-RecentReport {
     return $false
 }
 
-
 function Invoke-GenerateReport {
     param (
         [string]$ReportPath
@@ -311,23 +258,26 @@ function Invoke-GenerateReport {
     if (-not (Test-Path -Path $cacheDir)) {
         New-Item -ItemType Directory -Path $cacheDir | Out-Null
     }
+
     Start-Process "dxdiag" -ArgumentList "/dontskip /t `"$ReportPath`"" -NoNewWindow -Wait
     $timeoutSeconds = 60
     $stopwatch = [System.Diagnostics.Stopwatch]::StartNew()
+
     while (-not (Test-Path -Path $ReportPath) -and $stopwatch.Elapsed.TotalSeconds -lt $timeoutSeconds) {
         Start-Sleep -Seconds 1
     }
-    if (Test-Path -Path $ReportPath) {
-        Write-Host "..Report Created: $ReportPath`n"
-    } else {
+
+    if (-not (Test-Path -Path $ReportPath)) {
         Write-Host "..Report Creation Failed!`n"
-		Start-Sleep -Seconds 3
-		PrintProgramSeparator
-		Write-Host "`nReturning To Submenu..."
-        Start-Sleep -Seconds 1
-        Show-DeviceInfoMenu		
+        $retryChoice = Read-Host "Retry report generation? (Y/N)"
+        if ($retryChoice -eq "Y") {
+            Invoke-GenerateReport -ReportPath $ReportPath # Attempt retry
+        } else {
+            Write-Host "Exiting to submenu..."
+            Start-Sleep -Seconds 1
+            Show-DeviceInfoMenu
+        }
+    } else {
+        Write-Host "..Created: $ReportPath`n"
     }
 }
-
-
-

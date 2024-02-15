@@ -8,8 +8,10 @@
 $Global:LastInboundBytes_f8m = 0
 $Global:LastOutboundBytes_u4x = 0
 $Global:reportPath_s9v = ".\cache\dxdiagReport.txt"
-$Global:FetchedInfo1_9vb = @{}
-$Global:FetchedInfo2_gv3 = @{}
+$Global:FetchedInfo_9vb = @{}
+$Global:systemKeys_c5s = @("Machine name", "Operating System", "Language", "System Model", "BIOS", "Processor", "Memory", "Windows Dir", "DirectX Version")
+$Global:graphicsKeys_37v = @("Manufacturer", "Card name", "Dedicated Memory", "Feature Levels", "Monitor Model", "Monitor Name", "Native Mode", "Current Mode")
+$Global:audioKeys_5f4 = @("Driver Provider", "Description", "Min/Max Sample Rate")
 
 # Initialize program
 function script-InitializationCode {
@@ -26,7 +28,7 @@ function script-InitializationCode {
 # Exit Program
 function script-FinalizationCode {
     [Console]::Clear()
-    Write-Host "`n....Powershell Script Exiting.`n"
+    Write-Host "`n...Powershell Script Exiting..."
     Start-Sleep -Seconds 2
 }
 
