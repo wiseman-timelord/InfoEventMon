@@ -8,15 +8,18 @@
 $Global:LastInboundBytes_f8m = 0
 $Global:LastOutboundBytes_u4x = 0
 $Global:reportPath_s9v = ".\cache\dxdiagReport.txt"
+$Global:FetchedInfo1_9vb = @{}
+$Global:FetchedInfo2_gv3 = @{}
 
 # Initialize program
 function script-InitializationCode {
-    PrintProgramTitle
+	Write-Host "Configuring Display.."
+	Start-Sleep -Seconds 1
 	Set-ConfigureDisplay
 	PrintProgramTitle
-	Ensure-CacheDirectory
-    Start-Sleep -Seconds 1
-	Write-Host "`nPowershell Script Initialized...`n"
+    Write-Host "`..Display Configured`n"
+	Start-Sleep -Seconds 1
+	Write-Host "Powershell Script Initialized...`n"
     Start-Sleep -Seconds 2
 }
 
