@@ -12,8 +12,9 @@ Alpha; Consolidating, Performancer and WhaGoWan and maybe some other half-develo
 InfoEventMon Will become a tool for, System Information, Device Monitoring, System Events, in one place, it will all be done through cmdlets, so, dont expect much.
 
 ### Features
-**CPU/Network Monitoring:** Monitor the performance of your, Processor or Network, see `Preview` section below.
-**Application/System Events:** Export recent events to a relevantly relating `ProgramEvents.Txt/SystemEvents.Txt`, with options to launch notepad and view it.  
+- **CPU/Network Monitoring:** Monitor the performance of your, Processor or Network, see `Preview` section below.
+- **DirectX Information:** Output the popular information relevant to a DxDiag report, without having to sift through garbage.
+- **Application/System Events:** Export recent events to a relevantly relating `ProgramEvents.Txt/SystemEvents.Txt`, with options to launch notepad and view it.  
 
 ### Preview
 The Main Menu (those are submenus)...
