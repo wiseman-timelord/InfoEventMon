@@ -68,9 +68,9 @@ function Show-DeviceInfoMenu {
     Clear-Host
     PrintProgramTitle
     Write-Host "`n`n`n`n`n`n`n`n`n"
-    Write-Host "                    1. System Information,`n"
-    Write-Host "                    2. Graphics Information,`n"
-    Write-Host "                    3. Audio Information."
+    Write-Host "                     1. System Information,`n"
+    Write-Host "                     2. Graphics Information,`n"
+    Write-Host "                     3. Audio Information."
     Write-Host "`n`n`n`n`n`n`n`n`n"
     PrintProgramSeparator
     $choice = Read-Host "Select; Options = 1-3, Back = B"
