@@ -145,139 +145,56 @@ function Get-EventsReport {
 
 
 
-
-
 function Show-Information {
-    param (
-        [string]$Type
-    )
+    param ([string]$Type)
     Clear-Host
     PrintProgramTitle
-    Ensure-AndDisplayReportStatus -ReportPath $Global:reportPath_s9v
+    
+    # Start the report check/generation process
+    CheckAndGenerateDirectXReport
+    
+    # Retrieve and populate information from the report
+    RetrieveDataFromReportAndPopulateLists
 
-    # Define keys based on type using global variables
-    $keys = switch ($Type) {
-        "System" { $Global:systemKeys_c5s }
-        "Graphics" { $Global:graphicsKeys_37v }
-        "Audio" { $Global:audioKeys_5f4 }
-        default { @() }
-    }
-
+    # Display the information
     Write-Host "$Type Information:"
-    foreach ($key in $keys) {
-        if ($Global:FetchedInfo_9vb.ContainsKey($key)) {
-            Write-Host "${key}: $($Global:FetchedInfo_9vb[$key])"
+    if ($Global:infoKeys_5f4.ContainsKey($Type)) {
+        foreach ($key in $Global:infoKeys_5f4[$Type]) {
+            if ($Global:FetchedInfo_9vb.ContainsKey($key)) {
+                Write-Host "${key}: $($Global:FetchedInfo_9vb[$key])"
+            }
         }
-    }
-
-    if (-not $keys.Count) {
+    } else {
         Write-Host "Error Retrieving $Type Info!"
     }
 
     Shorter-FunctionsPromptHelper
 }
 
-
-function Shorter-FunctionsPromptHelper {
-	Write-Host ""
-	PrintProgramSeparator
-    Write-Host "Select; Back = B:" -NoNewline
-    do {
-        $key = [console]::ReadKey($true)
-    } while ($key.Key -ne "B")
-    Write-Host "`nReturning To Submenu..."
-    Start-Sleep -Seconds 1
-    Show-DeviceInfoMenu
-}
-
-function Ensure-AndDisplayReportStatus {
-    param (
-        [string]$ReportPath
-    )
-    Write-Host "Check Report Status.."
-    if (-not (Test-RecentReport -ReportPath $ReportPath)) {
+function CheckAndGenerateDirectXReport {
+    $reportPath = $Global:reportPath_s9v
+    Write-Host "Checking For Report.."
+    if (-not (Test-RecentReport -ReportPath $reportPath)) {
         Write-Host "..Retrieving New Report.."
-        Invoke-GenerateReport -ReportPath $ReportPath
-        PopulateGlobalFetchedInfo -ReportPath $ReportPath
+        Invoke-GenerateReport -ReportPath $reportPath
     } else {
         Write-Host "..Using Existing Report.`n"
-        PopulateGlobalFetchedInfo -ReportPath $ReportPath
     }
 }
 
-function PopulateGlobalFetchedInfo {
-    param ([string]$ReportPath)
-    $content = Get-Content -Path $ReportPath -Raw
-
-    # Define the keys for each section
-    $systemKeys_c5s = @("Machine name", "Operating System", "Language", "System Model", "BIOS", "Processor", "Memory", "Windows Dir", "DirectX Version")
-    $graphicsKeys_37v = @("Manufacturer", "Card name", "Dedicated Memory", "Feature Levels", "Monitor Model", "Monitor Name", "Native Mode", "Current Mode")
-    $audioKeys_5f4 = @("Driver Provider", "Description", "Min/Max Sample Rate")
-
-    # Clear existing data
+function RetrieveDataFromReportAndPopulateLists {
+    $reportPath = $Global:reportPath_s9v
+    $content = Get-Content -Path $reportPath -Raw
     $Global:FetchedInfo_9vb.Clear()
-
-    # Helper function to parse and store data based on keys
-    function ExtractAndStoreData($pattern, $keys) {
+    foreach ($type in $Global:infoKeys_5f4.Keys)
+        $pattern = GetPatternForType -Type $type
         if ($content -match $pattern) {
-            foreach ($key in $keys) {
-                if ($matches[0] -match "${key}: (.*)") {
-                    $Global:FetchedInfo_9vb[$key] = $matches[1]
+            foreach ($key in $Global:infoKeys_5f4[$type]) {
+                if ($content -match "${key}: (.*?)`r?`n") {
+                    $Global:FetchedInfo_9vb[$key] = $matches[1].Trim()
                 }
             }
         }
     }
-
-    # Extract and store system information
-    ExtractAndStoreData 'System Information[\s\S]*?------------------', $systemKeys_c5s
-    # Extract and store graphics information
-    ExtractAndStoreData 'Display Devices[\s\S]*?------------------', $graphicsKeys_37v
-    # Extract and store audio information
-    ExtractAndStoreData 'Sound Devices[\s\S]*?------------------', $audioKeys_5f4
 }
 
-
-function Test-RecentReport {
-    param (
-        [string]$ReportPath
-    )
-    if (Test-Path -Path $ReportPath) {
-        $fileCreationTime = (Get-Item $ReportPath).LastWriteTime
-        $currentTime = Get-Date
-        $timeDifference = $currentTime.Subtract($fileCreationTime)
-        return $timeDifference.TotalHours -le 1
-    }
-    return $false
-}
-
-function Invoke-GenerateReport {
-    param (
-        [string]$ReportPath
-    )
-    $cacheDir = Split-Path -Path $ReportPath -Parent
-    if (-not (Test-Path -Path $cacheDir)) {
-        New-Item -ItemType Directory -Path $cacheDir | Out-Null
-    }
-
-    Start-Process "dxdiag" -ArgumentList "/dontskip /t `"$ReportPath`"" -NoNewWindow -Wait
-    $timeoutSeconds = 60
-    $stopwatch = [System.Diagnostics.Stopwatch]::StartNew()
-
-    while (-not (Test-Path -Path $ReportPath) -and $stopwatch.Elapsed.TotalSeconds -lt $timeoutSeconds) {
-        Start-Sleep -Seconds 1
-    }
-
-    if (-not (Test-Path -Path $ReportPath)) {
-        Write-Host "..Report Creation Failed!`n"
-        $retryChoice = Read-Host "Retry report generation? (Y/N)"
-        if ($retryChoice -eq "Y") {
-            Invoke-GenerateReport -ReportPath $ReportPath # Attempt retry
-        } else {
-            Write-Host "Exiting to submenu..."
-            Start-Sleep -Seconds 1
-            Show-DeviceInfoMenu
-        }
-    } else {
-        Write-Host "..Created: $ReportPath`n"
-    }
-}

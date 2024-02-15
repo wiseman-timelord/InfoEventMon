@@ -9,9 +9,12 @@ $Global:LastInboundBytes_f8m = 0
 $Global:LastOutboundBytes_u4x = 0
 $Global:reportPath_s9v = ".\cache\dxdiagReport.txt"
 $Global:FetchedInfo_9vb = @{}
-$Global:systemKeys_c5s = @("Machine name", "Operating System", "Language", "System Model", "BIOS", "Processor", "Memory", "Windows Dir", "DirectX Version")
-$Global:graphicsKeys_37v = @("Manufacturer", "Card name", "Dedicated Memory", "Feature Levels", "Monitor Model", "Monitor Name", "Native Mode", "Current Mode")
-$Global:audioKeys_5f4 = @("Driver Provider", "Description", "Min/Max Sample Rate")
+$Global:infoKeys_5f4 = @{
+    "System" = @("Machine name", "Operating System", "Language", "System Model", "BIOS", "Processor", "Memory", "Windows Dir", "DirectX Version")
+    "Graphics" = @("Manufacturer", "Card name", "Dedicated Memory", "Feature Levels", "Monitor Model", "Monitor Name", "Native Mode", "Current Mode")
+    "Audio" = @("Driver Provider", "Description", "Min/Max Sample Rate")
+}
+
 
 # Initialize program
 function script-InitializationCode {
