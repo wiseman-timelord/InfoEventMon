@@ -67,7 +67,7 @@ Refreshing In 5 Seconds...
 NIC Name: Realtek PCIe GbE Family Controller
 Status: Up
 Speed: 1 Gbps
-IPv4 Address: 192.168.1.2
+IPv4 Address: XXX.XXX.XXX.XXX
 Download Rate: 15.4 KB/s
 Upload Rate: 13.5 KB/s
 Discards Total: 0
