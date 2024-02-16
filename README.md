@@ -5,7 +5,7 @@ Alpha; Consolidating, Performancer and WhaGoWan and maybe some other half-develo
 1. Progress submenu options for "Device Information" to completion; Options on Submenu have been refined to, System, Graphics, Sound... 
 - it needs to detect up to 2 graphics cards and upto 3 sound devices (to fit in space). 
 - after adding multiple per section above, then will be able to add, "Disk & DVD/CD-ROM Drives" and "DirectInput Devices", submenu items, both these sections will requre to fetch multiple of the same line identifiers per section, and also a maximum number of lines fetched.
-2. the prompts for monitoring require instant activation of keypresses, GPT has infected a few other prompts, so, the infected prompts must be reverted or all prompts must now have this for consistency.
+2. the prompts for monitoring require instant activation of keypresses, GPT has infected a few other prompts, so, the infected prompts must be reverted or all prompts must now have this, for consistency.
 
 ## Description
 InfoEventMon Will become a tool for, System Information, Device Monitoring, System Events, in one place, it will all be done through cmdlets, so, dont expect much.
