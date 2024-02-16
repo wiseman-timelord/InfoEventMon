@@ -41,7 +41,6 @@ function Show-MainMenu {
     }
 }
 
-
 function Show-PerformanceMonitorMenu {
     Clear-Host
     PrintProgramTitle
@@ -92,7 +91,40 @@ function Show-DeviceInfoMenu {
     }
 }
 
-
+function Show-Information {
+    param ([string]$Type)
+    Clear-Host
+    PrintProgramTitle
+    CheckAndGenerateDirectXReport
+    RetrieveDataFromReportAndPopulateLists
+    Write-Host "$Type Information:"
+    if ($Global:infoKeys_5f4.ContainsKey($Type)) {
+        foreach ($key in $Global:infoKeys_5f4[$Type]) {
+            if ($Global:FetchedInfo_9vb.ContainsKey($key)) {
+                $value = $Global:FetchedInfo_9vb[$key]
+                $maxValueLength = 67 - ($key.Length + 2)
+                if ($value.Length -gt $maxValueLength) {
+                    $value = $value.Substring(0, $maxValueLength - 3) + "..."
+                }
+                Write-Host "${key}: $value"
+            }
+        }
+    } else {
+        Write-Host "Error Retrieving $Type Info!"
+    }
+    Write-Host ""
+    PrintProgramSeparator
+    $userChoice = Read-Host "Select; Back = B"
+    if ($userChoice -eq 'B' -or $userChoice -eq 'b') {
+        Write-Host "Returning To Submenu..."
+        Start-Sleep -Seconds 1
+        Show-DeviceInfoMenu
+    } else {
+        Write-Host "Invalid selection. Returning to Submenu..."
+        Start-Sleep -Seconds 1
+        Show-DeviceInfoMenu
+    }
+}
 
 function Show-RecentEventsMenu {
     Clear-Host

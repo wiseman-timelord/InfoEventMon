@@ -150,43 +150,6 @@ function Get-EventsReport {
     Show-RecentEventsMenu
 }
 
-
-
-
-
-function Show-Information {
-    param ([string]$Type)
-    Clear-Host
-    PrintProgramTitle
-    CheckAndGenerateDirectXReport
-    RetrieveDataFromReportAndPopulateLists
-    Write-Host "$Type Information:"
-    if ($Global:infoKeys_5f4.ContainsKey($Type)) {
-        foreach ($key in $Global:infoKeys_5f4[$Type]) {
-            if ($Global:FetchedInfo_9vb.ContainsKey($key)) {
-                $value = $Global:FetchedInfo_9vb[$key]
-                $maxValueLength = 67 - ($key.Length + 2)
-                if ($value.Length -gt $maxValueLength) {
-                    $value = $value.Substring(0, $maxValueLength - 3) + "..."
-                }
-                Write-Host "${key}: $value"
-            }
-        }
-    } else {
-        Write-Host "Error Retrieving $Type Info!"
-    }
-    Write-Host ""
-    PrintProgramSeparator
-    Write-Host "Select; Back = B:" -NoNewline
-    do {
-        $key = [console]::ReadKey($true)
-    } while ($key.Key -ne "B")
-    Write-Host "`nReturning To Submenu..."
-    Start-Sleep -Seconds 1
-    Show-DeviceInfoMenu
-}
-
-
 function CheckAndGenerateDirectXReport {
     $reportPath = $Global:reportPath_s9v
     Write-Host "Checking Report.."
