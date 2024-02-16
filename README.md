@@ -3,7 +3,6 @@
 ### Status
 Alpha; Consolidating, Performancer and WhaGoWan and maybe some other half-developed ones, into a single program "InfoEventMon", for system monitoring, device info and recent events...
 1. Progress submenu options for "Device Information" to completion; Options on Submenu have been refined to, System, Graphics, Sound... 
-- Layout of text needs work.
 - if report is over 30 minutes long, then generate new report.
 - it needs to detect up to 2 graphics cards and upto 3 sound devices (to fit in space). 
 - add a drive info option to submenu, limit info per dive and/or do horizontally.
