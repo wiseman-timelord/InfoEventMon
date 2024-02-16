@@ -91,40 +91,7 @@ function Show-DeviceInfoMenu {
     }
 }
 
-function Show-Information {
-    param ([string]$Type)
-    Clear-Host
-    PrintProgramTitle
-    CheckAndGenerateDirectXReport
-    RetrieveDataFromReportAndPopulateLists
-    Write-Host "$Type Information:"
-    if ($Global:infoKeys_5f4.ContainsKey($Type)) {
-        foreach ($key in $Global:infoKeys_5f4[$Type]) {
-            if ($Global:FetchedInfo_9vb.ContainsKey($key)) {
-                $value = $Global:FetchedInfo_9vb[$key]
-                $maxValueLength = 67 - ($key.Length + 2)
-                if ($value.Length -gt $maxValueLength) {
-                    $value = $value.Substring(0, $maxValueLength - 3) + "..."
-                }
-                Write-Host "${key}: $value"
-            }
-        }
-    } else {
-        Write-Host "Error Retrieving $Type Info!"
-    }
-    Write-Host ""
-    PrintProgramSeparator
-    $userChoice = Read-Host "Select; Back = B"
-    if ($userChoice -eq 'B' -or $userChoice -eq 'b') {
-        Write-Host "Returning To Submenu..."
-        Start-Sleep -Seconds 1
-        Show-DeviceInfoMenu
-    } else {
-        Write-Host "Invalid selection. Returning to Submenu..."
-        Start-Sleep -Seconds 1
-        Show-DeviceInfoMenu
-    }
-}
+
 
 function Show-RecentEventsMenu {
     Clear-Host
@@ -145,6 +112,86 @@ function Show-RecentEventsMenu {
             Start-Sleep -Seconds 2
             Show-RecentEventsMenu
         }
+    }
+}
+
+
+
+
+
+
+# The sections requiring update below here...
+
+# DirectX Information Submenu 
+function Show-DeviceInfoMenu {
+    Clear-Host
+    PrintProgramTitle
+    Write-Host "`n`n`n`n`n`n`n`n`n"
+    Write-Host "                     1. System Information,`n"
+    Write-Host "                     2. Graphics Information,`n"
+    Write-Host "                     3. Audio Information."
+    Write-Host "`n`n`n`n`n`n`n`n`n"
+    PrintProgramSeparator
+    $choice = Read-Host "Select; Options = 1-3, Back = B"
+
+    switch ($choice) {
+        "1" { Show-Information -Type "System" }
+        "2" { Show-Information -Type "Graphics" }
+        "3" { Show-Information -Type "Audio" }
+        "b" {
+            Write-Host "Returning To Main Menu..."
+            Start-Sleep -Seconds 1
+            Show-MainMenu
+        }
+        default {
+            Write-Host "Invalid choice. Please try again."
+            Start-Sleep -Seconds 2
+            Show-DeviceInfoMenu
+        }
+    }
+}
+
+# Display Retrieved DirectX Info
+function Show-Information {
+    param ([string]$Type)
+    Clear-Host
+    PrintProgramTitle
+    CheckAndGenerateDirectXReport
+    RetrieveDataFromReportAndPopulateLists
+    Write-Host "$Type Information:"
+
+    # Use the global device count for the given type
+    $deviceCount = $Global:deviceCounts[$Type]
+
+    for ($i = 0; $i -lt $deviceCount; $i++) {
+        $dict = switch ($i) {
+            0 {$Global:FetchedInfo_9vb}
+            1 {$Global:FetchedInfo_99c}
+            2 {$Global:FetchedInfo_999}
+            default {break}
+        }
+
+        $infoDisplayed = $false
+        foreach ($key in $Global:infoKeys_5f4[$Type]) {
+            if ($dict.ContainsKey($key)) {
+                $value = $dict[$key]
+                Write-Host "${key}: $value"
+                $infoDisplayed = $true
+            }
+        }
+        if ($infoDisplayed) { Write-Host "" } # Add separation between devices
+    }
+
+    PrintProgramSeparator
+    $userChoice = Read-Host "Select; Back = B"
+    if ($userChoice -eq 'B' -or $userChoice -eq 'b') {
+        Write-Host "Returning To Submenu..."
+        Start-Sleep -Seconds 1
+        Show-DeviceInfoMenu
+    } else {
+        Write-Host "Invalid selection. Returning to Submenu..."
+        Start-Sleep -Seconds 1
+        Show-DeviceInfoMenu
     }
 }
 

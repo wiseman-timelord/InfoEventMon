@@ -150,6 +150,9 @@ function Get-EventsReport {
     Show-RecentEventsMenu
 }
 
+# The sections requiring update below here...
+
+# Generate DirectX Report
 function CheckAndGenerateDirectXReport {
     $reportPath = $Global:reportPath_s9v
     Write-Host "Checking Report.."
@@ -172,25 +175,53 @@ function CheckAndGenerateDirectXReport {
     }
 }
 
-
+# Retrieve Information From Direct X Report
 function RetrieveDataFromReportAndPopulateLists {
     $reportPath = $Global:reportPath_s9v
     $content = Get-Content -Path $reportPath -Raw
+
+    # Resetting dictionaries
     $Global:FetchedInfo_9vb.Clear()
-    foreach ($type in $Global:infoKeys_5f4.Keys) {
-        # Integrated GetPatternForType logic directly
-        $pattern = switch ($type) {
-            "System" { "(?s)------------------\r?\nSystem Information\r?\n------------------(.*?)------------------" }
-            "Graphics" { "(?s)---------------\r?\nDisplay Devices\r?\n---------------(.*?)---------------" }
-            "Audio" { "(?s)-------------\r?\nSound Devices\r?\n-------------(.*?)-------------" }
+    $Global:FetchedInfo_99c.Clear()
+    $Global:FetchedInfo_999.Clear()
+
+    function ProcessDeviceInfo {
+        param (
+            [string]$deviceSection,
+            [string]$deviceType,
+            [int]$deviceIndex
+        )
+        $dict = switch ($deviceIndex) {
+            0 { $Global:FetchedInfo_9vb }
+            1 { $Global:FetchedInfo_99c }
+            2 { $Global:FetchedInfo_999 }
             default { $null }
         }
-        if ($content -match $pattern) {
-            foreach ($key in $Global:infoKeys_5f4[$type]) {
-                if ($content -match "${key}: (.*?)`r?`n") {
-                    $Global:FetchedInfo_9vb[$key] = $matches[1].Trim()
-                }
+        if ($dict -eq $null) {
+            return
+        }
+        foreach ($key in $Global:infoKeys_5f4[$deviceType]) {
+            if ($deviceSection -match "${key}: (.*?)`r?`n") {
+                $value = $matches[1].Trim()
+                $dict[$key] = $value
             }
         }
+    }
+
+    # System - Only one expected
+    if ($content -match "(?s)------------------\r?\nSystem Information\r?\n------------------(.*?)------------------") {
+        ProcessDeviceInfo -deviceSection $matches[1] -deviceType "System" -deviceIndex 0
+    }
+
+    # Graphics - Handle up to 2 devices
+    $graphicsMatches = [regex]::Matches($content, "(?s)---------------\r?\nDisplay Devices\r?\n---------------(.*?)(?=---------------|$)")
+    for ($i = 0; $i -lt [Math]::Min($graphicsMatches.Count, 2); $i++) {
+        ProcessDeviceInfo -deviceSection $graphicsMatches[$i].Value -deviceType "Graphics" -deviceIndex $i
+    }
+
+    # Audio - Handle up to 3 devices
+    $audioMatches = [regex]::Matches($content, "(?s)-------------\r?\nSound Devices\r?\n-------------(.*?)(?=-------------|$)")
+    for ($i = 0; $i -lt [Math]::Min($audioMatches.Count, 3); $i++) {
+        ProcessDeviceInfo -deviceSection $audioMatches[$i].Value -deviceType "Audio" -deviceIndex $i
     }
 }
