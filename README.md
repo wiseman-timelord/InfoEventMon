@@ -65,7 +65,7 @@ Select; Back = B
 Refreshing In 5 Seconds...
 
 ```
-- DirectX Information for System (valid report timer 30m)...
+- DirectX Information for System (report overdue timer 30m)...
 ```
 =========================( InfoEventMon )==========================
 
@@ -120,6 +120,7 @@ Select; Open = O, Back = B:
 
 ## Notation
 - This is a, consolidation and update and upgrade, of multiple of my other programs.
+- It is deemed a somewhat fast system upgrade including, sorting parts and case removal and installation, would take 30 minutes minimum, hence valid Direct X report must be generated within 30 minutes.  
 
 ### Development
 - TBA
