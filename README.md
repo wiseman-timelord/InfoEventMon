@@ -16,7 +16,7 @@ InfoEventMon Will become a tool for, System Information, Device Monitoring, Syst
 - **Application/System Events:** Export recent events to a relevantly relating `ProgramEvents.Txt/SystemEvents.Txt`, with options to launch notepad and view it.  
 
 ### Preview
-The Main Menu (those are submenus)...
+The Main Menu (there are submenus for each)...
 ```
 =========================( PerfEventMon )=========================
 
@@ -49,7 +49,7 @@ The Main Menu (those are submenus)...
 Select, Options = 1-3, Exit = X: :
 
 ```
-- Monitoring of Processor/Network...
+- Monitoring of Processor...
 ```
 =========================( InfoEventMon )=========================
 
@@ -64,26 +64,31 @@ Select; Back = B
 Refreshing In 5 Seconds...
 
 ```
-- DirectX Information for System/Graphics/Audio...
+- DirectX Information for System (valid report timer 30m)...
 ```
 =========================( InfoEventMon )==========================
 
-Checking For Report..
-Graphics Information:
-Manufacturer: To Be Filled By O.E.M.
-Card name: Radeon (TM) RX 470 Graphics
-Dedicated Memory: 8171 MB
-Feature Levels: 12_0,11_1,11_0,10_1,10_0,9_3,9_2,9_1
-Monitor Model: UMC SHARP
-Monitor Name: Generic PnP Monitor
-Native Mode: 1366 x 768(p) (59.964Hz)
-Current Mode: 2000 x 1126 (32 bit) (55Hz)
+Checking Report..
+..Report Overdue..
+..Generating Report..
+..Report Ready.
+
+System Information:
+Machine name: A320MPRO-F
+Operating System: Windows 10 Pro 64-bit (10.0, Build 19041) (190...
+Language: English (Regional Setting: English)
+System Model: A320M Pro4-F
+BIOS: P7.40 (type: UEFI)
+Processor: AMD Ryzen 9 3900X 12-Core Processor             (24 C...
+Memory: 65536MB RAM
+Windows Dir: C:\Windows
+DirectX Version: DirectX 12
 
 -------------------------------------------------------------------
 Select; Back = B:
 
 ```
-- Produce and open, Apps/System Events reports...
+- Recent events report for System...
 ```
 =========================( InfoEventMon )==========================
 
