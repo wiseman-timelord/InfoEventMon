@@ -189,18 +189,26 @@ function Show-Information {
 
 function CheckAndGenerateDirectXReport {
     $reportPath = $Global:reportPath_s9v
-    Write-Host "Checking For Report.."
-    if (-not (Test-RecentReport -ReportPath $reportPath)) {
-        Write-Host "..Retrieving New Report.."
-        $cacheDir = Split-Path -Path $reportPath -Parent
-        if (-not (Test-Path -Path $cacheDir)) {
-            New-Item -ItemType Directory -Path $cacheDir | Out-Null
+    Write-Host "Checking Report.."
+    $reportExists = Test-Path -Path $reportPath
+    $reportIsOld = $false
+    if ($reportExists) {
+        $reportAge = (Get-Date) - (Get-Item $reportPath).LastWriteTime
+        if ($reportAge.TotalMinutes -gt 30) {
+            Write-Host "..Report Overdue.."
+            $reportIsOld = $true
         }
+    }
+    if (-not $reportExists -or $reportIsOld) {
+        Write-Host "..Generating Report.."
+        $cacheDir = Split-Path -Path $reportPath -Parent
         Start-Process "dxdiag" -ArgumentList "/dontskip /t `"$reportPath`"" -NoNewWindow -Wait
+        Write-Host "..Report Ready.`n"
     } else {
-        Write-Host "..Using Existing Report.`n"
+        Write-Host "..Using Current Report.`n"
     }
 }
+
 
 function RetrieveDataFromReportAndPopulateLists {
     $reportPath = $Global:reportPath_s9v
