@@ -4,7 +4,7 @@
 Alpha; Consolidating, Performancer and WhaGoWan and maybe some other half-developed ones, into a single program "InfoEventMon", for system monitoring, device info and recent events...
 1. Progress submenu options for "Device Information" to completion; Options on Submenu have been refined to, System, Graphics, Sound... 
 - it needs to detect up to 2 graphics cards and upto 3 sound devices (to fit in space). 
-- add a drive info option to submenu, limit info per dive and/or do horizontally.
+- after adding multiple per section above, then will be able to add, "Disk & DVD/CD-ROM Drives" and "DirectInput Devices", submenu items, both these sections will requre to fetch multiple of the same line identifiers per section, and also a maximum number of lines fetched.
 2. the prompts for monitoring require instant activation of keypresses, GPT has infected a few other prompts, so, the infected prompts must be reverted or all prompts must now have this for consistency.
 
 ## Description
