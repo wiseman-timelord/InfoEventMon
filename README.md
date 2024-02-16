@@ -3,7 +3,7 @@
 ### Status
 Beta - Was all going fine, but after a day of trying to get the Directx Information display to show more than 1 device, I'm wasting time on this now, that could go on other projects; this project will require re-visiting later. However, one more thing before I finish on it...
 - Update batch launcher, to not automatically clean the log every time the powershell script exits, and instead have an option for this on the menu.
-- Make an installer, and move the create ".\cache" folder to it, instead of it running every time. (yes just that).
+- Make an installer, and move the create ".\cache" folder to it, instead of it running every time; alternatively put the install as an option in the main batch.
 
 ## Description
 A consolidation of, Performancer and WhaGoWan and some code from LLmPsBot~, into a single program "InfoEventMon". InfoEventMon is a tool for, System Information, Device Monitoring, System Events, in one place. It displays stuff basically, and the information it displays uses useful code for other powershell projects.
