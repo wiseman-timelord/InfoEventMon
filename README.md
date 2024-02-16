@@ -1,14 +1,10 @@
 # InfoEventMon
 
 ### Status
-Alpha; Consolidating, Performancer and WhaGoWan and maybe some other half-developed ones, into a single program "InfoEventMon", for system monitoring, device info and recent events...
-1. Progress submenu options for "Device Information" to completion; Options on Submenu have been refined to, System, Graphics, Sound... 
-- it needs to detect up to 2 graphics cards and upto 3 sound devices (to fit in space). 
-- after adding multiple per section above, then will be able to add, "Disk & DVD/CD-ROM Drives" and "DirectInput Devices", submenu items, both these sections will requre to fetch multiple of the same line identifiers per section, and also a maximum number of lines fetched.
-
+Beta - Was all going fine, but after a day of trying to get the Directx Information display to show more than 1 device, I'm wasting time on this now, that could go on other projects; this project will require re-visiting later.
 
 ## Description
-InfoEventMon Will become a tool for, System Information, Device Monitoring, System Events, in one place, it will all be done through cmdlets, so, dont expect much.
+A consolidation of, Performancer and WhaGoWan and some code from LLmPsBot~, into a single program "InfoEventMon". InfoEventMon is a tool for, System Information, Device Monitoring, System Events, in one place. It displays stuff basically, and the information it displays uses useful code for other powershell projects.
 
 ### Features
 - **CPU/Network Monitoring:** Monitor the performance of your, Processor or Network, see `Preview` section below.
@@ -103,9 +99,8 @@ Select; Open = O, Back = B:
 
 ```
 
-
 ## Usage
-1. Unpack the program to a sensible location, sensible locations do not include, "C:\Program Files" or "C:\Program Files(x86)", though it may work in those locations.
+1. Unpack the program to a sensible location, sensible locations do NOT include, "C:\Program Files" or "C:\Program Files(x86)", though it may work in those locations.
 2. Run `InfoEventMon.Bat`, select `Option 1`, the `main.ps1` script will then load.
 3. Navigate the menus, select your options, as you prefer. 
 4. Navigate `Back` to the main menu, then `Exit` the program, then `Exit` the Launcher.
@@ -122,7 +117,8 @@ Select; Open = O, Back = B:
 - It is deemed a somewhat faster system upgrade including, sorting parts and case removal and installation, would take 30 minutes minimum, hence valid Direct X report must be generated within 30 minutes.  
 
 ### Development
-- TBA
+- DirectX Information: it needs to detect up to 2 graphics cards and upto 3 sound devices (to fit in space). 
+- DirectX Information: options for, "Disk & DVD/CD-ROM Drives" and "DirectInput Devices", probably fit multiple of each per page.
 
 ## Disclaimer
 This software is subject to the terms in License.Txt, covering usage, distribution, and modifications. For full details on your rights and obligations, refer to License.Txt.
