@@ -12,17 +12,7 @@ echo.
 echo =========================( InfoEventMon )==========================
 echo.
 timeout /t 1 /nobreak >nul
-echo Checking Cache Dir..
-if not exist ".\cache\" (
-    echo ..Not Found, Creating..
-    mkdir ".\cache"
-    echo ..Cache Dir Created.
-) else (
-    echo ..Cache Dir Present.
-)
-echo.
-timeout /t 1 /nobreak >nul
-echo Cleaning Event Logs..
+echo Maintenenace Started..
 if exist ".\cache\ProgramEvents.Log" (
     echo Deleted: ProgramEvents.Log
     del ".\cache\ProgramEvents.Log"
@@ -31,7 +21,7 @@ if exist ".\cache\SystemEvents.Log" (
     echo Deleted: SystemEvents.Log
     del ".\cache\SystemEvents.Log"
 )
-echo ..Cleaning Complete.
+echo ..Maintenance Done.
 echo.
 timeout /t 1 /nobreak >nul
 echo Launcher Initialized...
@@ -55,6 +45,7 @@ echo.
 echo.
 echo.
 echo.
+echo                        0. Setup-Install,
 echo.
 echo                        1. Run InfoEventMon,
 echo.
@@ -67,11 +58,11 @@ echo.
 echo.
 echo.
 echo.
-echo.
 echo -------------------------------------------------------------------
 
 :: Variables
-set /p choice=Select, Options=1-2, Exit=X: 
+set /p choice=Select, Options=0-3, Exit=X: 
+if "%choice%"=="0" goto setupDirs
 if "%choice%"=="1" goto executeMain
 if "%choice%"=="2" goto checkScript
 if "%choice%"=="3" goto cleanLog
@@ -80,20 +71,19 @@ echo Invalid choice. Try again.
 timeout /t 2 /nobreak >nul
 goto menu
 
-:: Check for presence of powershell core and execute main.py
+:: Execute main.py
 :executeMain
 cls
 echo.
 echo =========================( InfoEventMon )==========================
 echo.
-echo Checking Error-Crash.Log..
+timeout /t 1 /nobreak >nul
+echo Maintenenace Started..
 if exist ".\Errors-Crash.Log" (
     echo Deleted: Errors-Crash.Log
     del ".\Errors-Crash.Log"
-) else (
-    echo ..First Run?
 )
-echo. ..Maintenance Done.
+echo ..Maintenance Done.
 echo.
 timeout /t 1 /nobreak >nul
 echo Launching Script...
@@ -113,7 +103,7 @@ echo Returning to menu..
 timeout /t 3 /nobreak >nul
 goto menu
 
-:: Function to Check File Structure
+:: Check File Structure
 :checkScript
 cls
 echo.
@@ -138,20 +128,41 @@ echo.
 timeout /t 2 /nobreak >nul
 goto menu
 
-:: Function to Check File Structure
+:: Clean Error Logs
 :cleanLog
 cls
 echo.
 echo =========================( InfoEventMon )==========================
 echo.
 echo Cleaning Errors-Crash.Log..
-for %%I in (".\Errors-Crash.Log") do if %%~zI==0 (
-    echo ..Errors-Crash.Log Empty..
+if exist ".\Errors-Crash.Log" (
+    echo ..Cleaning Errors-Crash.Log..
+    powershell.exe -NoProfile -File ".\scripts\cleaner.ps1"
 ) else (
-    echo ..Cleaning Errors-Crash-Log..
-    pwsh.exe -NoProfile -File ".\scripts\cleaner.ps1"
+    echo ..Errors-Crash.Log Missing..
 )
 Echo ..Cleaning Complete.
+echo.
+timeout /t 1 /nobreak >nul
+echo Returning to menu..
+echo.
+timeout /t 2 /nobreak >nul
+goto menu
+
+:: Setup Directories
+:setupDirs
+cls
+echo.
+echo =========================( InfoEventMon )==========================
+echo.
+echo Starting Setup-Install..
+timeout /t 1 /nobreak >nul
+if not exist ".\cache\" (
+    echo ..Creating Directory..
+    mkdir ".\cache"
+)
+timeout /t 1 /nobreak >nul
+echo ..Setup-Install Complete.
 echo.
 timeout /t 1 /nobreak >nul
 echo Returning to menu..
