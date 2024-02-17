@@ -7,7 +7,7 @@ mode con cols=67 lines=32
 color 80
 title InfoEventMon
 cd /d "%~dp0"
-set ErrorLog=Errors-Crash.Log
+set ErrorLog=.\cache\Errors-Crash.Log
 echo.
 echo =========================( InfoEventMon )==========================
 echo.
@@ -62,7 +62,7 @@ echo.
 echo -------------------------------------------------------------------
 
 :: Variables
-set /p choice=Select, Options=0-3, Exit=X: 
+set /p choice=Select, Options=1-3, Exit=X: 
 if "%choice%"=="1" goto executeMain
 if "%choice%"=="2" goto checkScript
 if "%choice%"=="3" goto cleanLog
@@ -79,9 +79,9 @@ echo =========================( InfoEventMon )==========================
 echo.
 timeout /t 1 /nobreak >nul
 echo Maintenenace Started..
-if exist ".\Errors-Crash.Log" (
+if exist ".\cache\Errors-Crash.Log" (
     echo Deleted: Errors-Crash.Log
-    del ".\Errors-Crash.Log"
+    del ".\cache\Errors-Crash.Log"
 )
 echo ..Maintenance Done.
 echo.
@@ -91,10 +91,10 @@ echo.
 timeout /t 1 /nobreak >nul
 where pwsh >nul 2>&1
 if %ERRORLEVEL% equ 0 (
-    pwsh.exe -NoProfile -ExecutionPolicy Bypass -File ".\main.ps1" 2>>".\Errors-Crash.Log"
+    pwsh.exe -NoProfile -ExecutionPolicy Bypass -File ".\main.ps1" 2>>".\cache\Errors-Crash.Log"
 	echo ...Psc Process Exited.
 ) else (
-    powershell.exe -NoProfile -ExecutionPolicy Bypass -File ".\main.ps1" 2>>".\Errors-Crash.Log"
+    powershell.exe -NoProfile -ExecutionPolicy Bypass -File ".\main.ps1" 2>>".\cache\Errors-Crash.Log"
 	echo ...Ps Process Exited.
 )
 echo.
@@ -135,7 +135,7 @@ echo.
 echo =========================( InfoEventMon )==========================
 echo.
 echo Cleaning Errors-Crash.Log..
-if exist ".\Errors-Crash.Log" (
+if exist ".\cache\Errors-Crash.Log" (
     echo ..Cleaning Errors-Crash.Log..
     powershell.exe -NoProfile -File ".\scripts\cleaner.ps1"
 ) else (

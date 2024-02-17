@@ -2,7 +2,7 @@
 
 function Clean-Log {
     param (
-        [string]$LogPath = ".\Errors-Crash.Log"
+        [string]$LogPath = ".\cache\Errors-Crash.Log"
     )
 
     # Read the log file content

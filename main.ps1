@@ -37,9 +37,10 @@ function script-InitializationCode {
 
 # Exit Program
 function script-FinalizationCode {
-    [Console]::Clear()
-    Write-Host "`n...Powershell Script Exiting..."
+    Write-Host "Powershell Script Exiting..."
     Start-Sleep -Seconds 2
+	[Console]::Clear()
+	PrintProgramTitle
 }
 
 # Main application loop
