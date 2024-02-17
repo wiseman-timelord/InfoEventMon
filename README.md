@@ -101,6 +101,7 @@ Select; Open = O, Back = B:
 
 ## Usage
 1. Unpack the program to a sensible location, sensible locations do NOT include, "C:\Program Files" or "C:\Program Files(x86)", though it may work in those locations.
+2. Run `Setup-Install.Bat`, it will create ".\cache" folder for all, logs and reports.
 2. Run `InfoEventMon.Bat`, select `Option 1`, the `main.ps1` script will then load.
 3. Navigate the menus, select your options, as you prefer. 
 4. Navigate `Back` to the main menu, then `Exit` the program, then `Exit` the Launcher.
