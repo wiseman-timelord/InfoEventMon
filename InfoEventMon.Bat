@@ -1,11 +1,11 @@
-REM Script: DongleQuery.Bat
+REM Script: InfoEventMon.Bat
 
 @echo off
 
 :: Initialization
 mode con cols=67 lines=32
 color 80
-title SysConfWha
+title InfoEventMon
 cd /d "%~dp0"
 set ErrorLog=Errors-Crash.Log
 echo.
@@ -45,7 +45,6 @@ echo.
 echo.
 echo.
 echo.
-echo                        0. Setup-Install,
 echo.
 echo                        1. Run InfoEventMon,
 echo.
@@ -58,11 +57,12 @@ echo.
 echo.
 echo.
 echo.
+echo.
+echo.
 echo -------------------------------------------------------------------
 
 :: Variables
 set /p choice=Select, Options=0-3, Exit=X: 
-if "%choice%"=="0" goto setupDirs
 if "%choice%"=="1" goto executeMain
 if "%choice%"=="2" goto checkScript
 if "%choice%"=="3" goto cleanLog
@@ -142,27 +142,6 @@ if exist ".\Errors-Crash.Log" (
     echo ..Errors-Crash.Log Missing..
 )
 Echo ..Cleaning Complete.
-echo.
-timeout /t 1 /nobreak >nul
-echo Returning to menu..
-echo.
-timeout /t 2 /nobreak >nul
-goto menu
-
-:: Setup Directories
-:setupDirs
-cls
-echo.
-echo =========================( InfoEventMon )==========================
-echo.
-echo Starting Setup-Install..
-timeout /t 1 /nobreak >nul
-if not exist ".\cache\" (
-    echo ..Creating Directory..
-    mkdir ".\cache"
-)
-timeout /t 1 /nobreak >nul
-echo ..Setup-Install Complete.
 echo.
 timeout /t 1 /nobreak >nul
 echo Returning to menu..
